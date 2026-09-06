@@ -6,7 +6,7 @@
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#f4f1ea;color:#111;font-family:Georgia,"Times New Roman",Times,serif;font-size:17px;line-height:1.55}
 .mono{font-family:"Courier New",Courier,monospace}
-.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 .hero{border-bottom:3px solid #111;padding:56px 0 36px}
 .stamp{display:inline-block;border:2px solid #b3261e;color:#b3261e;padding:4px 10px;font-family:"Courier New",Courier,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;transform:rotate(-2deg);margin-bottom:22px}
 h1{font-size:clamp(40px,8vw,72px);line-height:1;margin:0 0 14px;letter-spacing:-.01em;font-weight:700}
@@ -28,7 +28,24 @@ h2{font-size:15px;font-family:"Courier New",Courier,monospace;letter-spacing:.16
 table{width:100%;border-collapse:collapse;font-size:15px}
 th,td{border:1px solid #111;padding:10px 12px;vertical-align:top;text-align:left;overflow-wrap:anywhere}
 th{background:#111;color:#f4f1ea;font-family:"Courier New",Courier,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:normal}
-td.lbl{font-weight:700;width:24%}
+td.lbl{font-weight:700;width:15%}
+td.g{width:22%}
+td.ex{width:27%}
+td.ans{width:36%;background:#fffdf5;padding:6px}
+textarea.ans-in,textarea.resp-in{width:100%;min-height:74px;border:1px dashed #111;background:#fff;font:inherit;font-size:14.5px;line-height:1.45;padding:8px;resize:vertical;color:#111}
+textarea.ans-in:focus,textarea.resp-in:focus,select.cert-in:focus{outline:2px solid #b3261e;outline-offset:1px}
+select.cert-in{font:inherit;font-size:15px;border:1px solid #111;background:#fff;padding:8px;width:100%}
+.own{display:grid;grid-template-columns:1fr 2fr;gap:1px;background:#111;border:1px solid #111;margin-top:12px}
+.own div{background:#fffdf5;padding:14px 16px}
+.own b{display:block;font-family:"Courier New",Courier,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#111;margin-bottom:6px}
+.export{margin:24px 0 0;border:1px solid #111;background:#fff;padding:22px}
+.export h3{margin:0 0 8px;font-size:20px}
+.export p{margin:0 0 14px;font-size:15px;color:#333}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font-family:"Courier New",Courier,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;border:2px solid #111;background:#111;color:#f4f1ea;padding:10px 16px;cursor:pointer}
+.btn.alt{background:#fff;color:#111}
+.btn.warn{background:#fff;color:#b3261e;border-color:#b3261e}
+.saved{font-family:"Courier New",Courier,monospace;font-size:12px;color:#555;margin:10px 0 0}
 td.ex{background:#fff;font-style:normal}
 td.ex:before{content:"π.χ. ";color:#b3261e;font-family:"Courier New",Courier,monospace;font-size:12px}
 .cert td:first-child{font-weight:700;width:30%}
@@ -75,13 +92,17 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 @media (max-width:600px){
  .step-head{grid-template-columns:1fr}
  .step-num{display:inline-block}
- td.lbl{width:auto}
+ td.lbl,td.g,td.ex,td.ans{width:auto}
+ td{width:auto}
  table,thead,tbody,th,td,tr{display:block}
  thead{display:none}
  td{border-top:0}
  tr{border-top:1px solid #111;margin-bottom:12px;display:block}
  td.lbl:before{content:"Πεδίο";}
  td.g:before{content:"Οδηγία";}
+ td.ans:before{content:"Η απάντησή σου";display:block;font-family:"Courier New",Courier,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#b3261e;margin-bottom:4px}
+ td.ans{padding:10px 12px}
+ .own{grid-template-columns:1fr}
  td:before{display:block;font-family:"Courier New",Courier,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#b3261e;margin-bottom:4px}
  td.ex:before{content:"Παράδειγμα συμπλήρωσης"}
  .cert td:first-child:before{content:"Βεβαιότητα"}
@@ -147,16 +168,16 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Ποια λέξη ή πλαίσιο ορίζει εκ των προτέρων ποιος φαίνεται «σωστός» — και τι πρέπει να παραβλέψω για να το δεχτώ;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Ο όρος / το όνομα / το σύνθημα</td><td class="g">Γράψε ακριβώς τη λέξη, όπως εμφανίζεται. Όχι χαρακτηρισμούς.</td><td class="ex">«Πρωτοβουλία για την Αλήθεια» (φανταστικό όνομα ομάδας που σχολιάζει την επικαιρότητα σε social media)</td></tr>
-<tr><td class="lbl">Λειτουργία 1 — Ποιο πρόβλημα ορίζει;</td><td class="g">Τι παρουσιάζεται ως το ζήτημα, χωρίς να το λέει ρητά;</td><td class="ex">Ότι υπάρχει «ψέμα» στον δημόσιο διάλογο και κάποιος πρέπει να το διορθώσει.</td></tr>
-<tr><td class="lbl">Λειτουργία 2 — Ποιον υποδεικνύει ως αίτιο;</td><td class="g">Ποιος γίνεται αυτόματα «ο άλλος»?</td><td class="ex">Όποιος διαφωνεί με την ομάδα. Αν εκείνοι είναι η «αλήθεια», η διαφωνία είναι εξ ορισμού το «ψέμα».</td></tr>
-<tr><td class="lbl">Λειτουργία 3 — Ποια ηθική κρίση εμπεριέχει;</td><td class="g">Ποιος είναι ο «καλός» στο πλαίσιο;</td><td class="ex">Η ομάδα εμφανίζεται ηθικά ανώτερη πριν πει οτιδήποτε επί της ουσίας.</td></tr>
-<tr><td class="lbl">Λειτουργία 4 — Ποια λύση υπονοεί;</td><td class="g">Τι ζητά σιωπηρά από τον αναγνώστη;</td><td class="ex">Να την εμπιστευτείς και να μην ελέγξεις τα λεγόμενά της — αφού «είναι» η αλήθεια.</td></tr>
-<tr><td class="lbl">Τι αφήνει εκτός το πλαίσιο;</td><td class="g">Ποιο στοιχείο δεν χωράει στη λέξη?</td><td class="ex">Ποιοι τη χρηματοδοτούν, ποιοι τη διοικούν, ποια μεθοδολογία ελέγχου χρησιμοποιεί.</td></tr>
-<tr><td class="lbl">Ουδέτερη αναδιατύπωση</td><td class="g">Ξαναγράψε το ίδιο πράγμα χωρίς την φορτισμένη λέξη.</td><td class="ex">«Ομάδα σχολιασμού που υποστηρίζει τη θέση Χ για το θέμα Ψ».</td></tr>
-<tr><td class="lbl">Κόστος αμφισβήτησης (dissonance)</td><td class="g">Τι θα έπρεπε να παραδεχτείς για να αμφισβητήσεις το όνομα?</td><td class="ex">Ότι μοιράστηκα δύο posts της ομάδας χωρίς να ελέγξω ποιοι είναι.</td></tr>
-<tr><td class="lbl">Πηγή ελέγχου</td><td class="g">Πού μπορείς να ελέγξεις ποιοι είναι πίσω από το όνομα?</td><td class="ex">Σελίδα «Σχετικά», μητρώο σωματείων/ΓΕΜΗ, ρεπορτάζ για χρηματοδότηση, Page Transparency στο Facebook.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Ο όρος / το όνομα / το σύνθημα</td><td class="g">Γράψε ακριβώς τη λέξη, όπως εμφανίζεται. Όχι χαρακτηρισμούς.</td><td class="ex">«Πρωτοβουλία για την Αλήθεια» (φανταστικό όνομα ομάδας που σχολιάζει την επικαιρότητα σε social media)</td><td class="ans"><textarea class="ans-in" id="a1-1" data-step="1" data-field="Ο όρος / το όνομα / το σύνθημα" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ο όρος / το όνομα / το σύνθημα — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Λειτουργία 1 — Ποιο πρόβλημα ορίζει;</td><td class="g">Τι παρουσιάζεται ως το ζήτημα, χωρίς να το λέει ρητά;</td><td class="ex">Ότι υπάρχει «ψέμα» στον δημόσιο διάλογο και κάποιος πρέπει να το διορθώσει.</td><td class="ans"><textarea class="ans-in" id="a1-2" data-step="1" data-field="Λειτουργία 1 — Ποιο πρόβλημα ορίζει;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Λειτουργία 1 — Ποιο πρόβλημα ορίζει; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Λειτουργία 2 — Ποιον υποδεικνύει ως αίτιο;</td><td class="g">Ποιος γίνεται αυτόματα «ο άλλος»?</td><td class="ex">Όποιος διαφωνεί με την ομάδα. Αν εκείνοι είναι η «αλήθεια», η διαφωνία είναι εξ ορισμού το «ψέμα».</td><td class="ans"><textarea class="ans-in" id="a1-3" data-step="1" data-field="Λειτουργία 2 — Ποιον υποδεικνύει ως αίτιο;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Λειτουργία 2 — Ποιον υποδεικνύει ως αίτιο; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Λειτουργία 3 — Ποια ηθική κρίση εμπεριέχει;</td><td class="g">Ποιος είναι ο «καλός» στο πλαίσιο;</td><td class="ex">Η ομάδα εμφανίζεται ηθικά ανώτερη πριν πει οτιδήποτε επί της ουσίας.</td><td class="ans"><textarea class="ans-in" id="a1-4" data-step="1" data-field="Λειτουργία 3 — Ποια ηθική κρίση εμπεριέχει;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Λειτουργία 3 — Ποια ηθική κρίση εμπεριέχει; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Λειτουργία 4 — Ποια λύση υπονοεί;</td><td class="g">Τι ζητά σιωπηρά από τον αναγνώστη;</td><td class="ex">Να την εμπιστευτείς και να μην ελέγξεις τα λεγόμενά της — αφού «είναι» η αλήθεια.</td><td class="ans"><textarea class="ans-in" id="a1-5" data-step="1" data-field="Λειτουργία 4 — Ποια λύση υπονοεί;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Λειτουργία 4 — Ποια λύση υπονοεί; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι αφήνει εκτός το πλαίσιο;</td><td class="g">Ποιο στοιχείο δεν χωράει στη λέξη?</td><td class="ex">Ποιοι τη χρηματοδοτούν, ποιοι τη διοικούν, ποια μεθοδολογία ελέγχου χρησιμοποιεί.</td><td class="ans"><textarea class="ans-in" id="a1-6" data-step="1" data-field="Τι αφήνει εκτός το πλαίσιο;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι αφήνει εκτός το πλαίσιο; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ουδέτερη αναδιατύπωση</td><td class="g">Ξαναγράψε το ίδιο πράγμα χωρίς την φορτισμένη λέξη.</td><td class="ex">«Ομάδα σχολιασμού που υποστηρίζει τη θέση Χ για το θέμα Ψ».</td><td class="ans"><textarea class="ans-in" id="a1-7" data-step="1" data-field="Ουδέτερη αναδιατύπωση" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ουδέτερη αναδιατύπωση — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Κόστος αμφισβήτησης (dissonance)</td><td class="g">Τι θα έπρεπε να παραδεχτείς για να αμφισβητήσεις το όνομα?</td><td class="ex">Ότι μοιράστηκα δύο posts της ομάδας χωρίς να ελέγξω ποιοι είναι.</td><td class="ans"><textarea class="ans-in" id="a1-8" data-step="1" data-field="Κόστος αμφισβήτησης (dissonance)" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Κόστος αμφισβήτησης (dissonance) — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πηγή ελέγχου</td><td class="g">Πού μπορείς να ελέγξεις ποιοι είναι πίσω από το όνομα?</td><td class="ex">Σελίδα «Σχετικά», μητρώο σωματείων/ΓΕΜΗ, ρεπορτάζ για χρηματοδότηση, Page Transparency στο Facebook.</td><td class="ans"><textarea class="ans-in" id="a1-9" data-step="1" data-field="Πηγή ελέγχου" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πηγή ελέγχου — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -171,6 +192,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Μέτρια — το πλαίσιο είναι σαφές, η προέλευση της ομάδας δεν έχει επιβεβαιωθεί ακόμα.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Δεν αναδημοσιεύω. Ρωτάω δημόσια, ευγενικά: «Ποιοι είστε και πώς ελέγχετε τους ισχυρισμούς σας;» Αν δεν υπάρχει απάντηση, το σημειώνω ως ένδειξη — όχι ως απόδειξη.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-1" data-step="1"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-1" data-step="1" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 </section>
@@ -197,14 +223,14 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Η πλειοψηφία που βλέπω είναι μετρημένη ή αισθητή — και ποιο από τα τρία κίνητρα συμμόρφωσης ενεργοποιεί μέσα μου;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Ο ισχυρισμός που «όλοι» υποστηρίζουν</td><td class="g">Μία πρόταση, όπως διατυπώνεται στα σχόλια.</td><td class="ex">«Το μέτρο Χ είναι αυτονόητο και μόνο οι πληρωμένοι διαφωνούν.»</td></tr>
-<tr><td class="lbl">Μέτρηση: σχόλια / λογαριασμοί / χρόνος</td><td class="g">Πόσα, από πόσους, σε ποιο χρονικό παράθυρο?</td><td class="ex">38 σχόλια υπέρ, από 31 λογαριασμούς, τα 26 μέσα στα πρώτα 20 λεπτά μετά την ανάρτηση.</td></tr>
-<tr><td class="lbl">Ποικιλία διατύπωσης</td><td class="g">Ίδιο νόημα με διαφορετικές λέξεις? Κατέγραψε 3 παραλλαγές.</td><td class="ex">«επιτέλους κάποιος το λέει» · «όλοι το ξέρουμε» · «μόνο εσύ δεν το βλέπεις» — ίδιο μήνυμα, τρεις μάσκες.</td></tr>
-<tr><td class="lbl">Ποιο κίνητρο συμμόρφωσης ενεργοποιείται σε μένα;</td><td class="g">Ακρίβεια / Αποδοχή / Αυτοεικόνα — διάλεξε και εξήγησε.</td><td class="ex">Ακρίβεια: σκέφτηκα «μήπως κάνω λάθος εγώ;» πριν διαβάσω έστω ένα επιχείρημα.</td></tr>
-<tr><td class="lbl">Ανεξάρτητο μέτρο</td><td class="g">Υπάρχει δημοσκόπηση, δεδομένα, ψηφοφορία, κάτι έξω από το thread?</td><td class="ex">Δημοσκόπηση ΧΧ (ημερομηνία): 41% υπέρ, 46% κατά, 13% ΔΞ/ΔΑ. Η «ομοφωνία» του thread δεν αντιστοιχεί.</td></tr>
-<tr><td class="lbl">Εναλλακτική εξήγηση</td><td class="g">Πώς θα εξηγούσες τους αριθμούς χωρίς συντονισμό?</td><td class="ex">Το post μοιράστηκε σε κλειστή ομάδα υποστηρικτών· η συγκέντρωση σχολίων μπορεί να είναι οργανική κινητοποίηση.</td></tr>
-<tr><td class="lbl">Πηγή / τεκμήριο</td><td class="g">URL, screenshot με ώρα, αρχείο.</td><td class="ex">Screenshot thread με timestamps (06/09, 21:14), link δημοσκόπησης.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Ο ισχυρισμός που «όλοι» υποστηρίζουν</td><td class="g">Μία πρόταση, όπως διατυπώνεται στα σχόλια.</td><td class="ex">«Το μέτρο Χ είναι αυτονόητο και μόνο οι πληρωμένοι διαφωνούν.»</td><td class="ans"><textarea class="ans-in" id="a2-1" data-step="2" data-field="Ο ισχυρισμός που «όλοι» υποστηρίζουν" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ο ισχυρισμός που «όλοι» υποστηρίζουν — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Μέτρηση: σχόλια / λογαριασμοί / χρόνος</td><td class="g">Πόσα, από πόσους, σε ποιο χρονικό παράθυρο?</td><td class="ex">38 σχόλια υπέρ, από 31 λογαριασμούς, τα 26 μέσα στα πρώτα 20 λεπτά μετά την ανάρτηση.</td><td class="ans"><textarea class="ans-in" id="a2-2" data-step="2" data-field="Μέτρηση: σχόλια / λογαριασμοί / χρόνος" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Μέτρηση: σχόλια / λογαριασμοί / χρόνος — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ποικιλία διατύπωσης</td><td class="g">Ίδιο νόημα με διαφορετικές λέξεις? Κατέγραψε 3 παραλλαγές.</td><td class="ex">«επιτέλους κάποιος το λέει» · «όλοι το ξέρουμε» · «μόνο εσύ δεν το βλέπεις» — ίδιο μήνυμα, τρεις μάσκες.</td><td class="ans"><textarea class="ans-in" id="a2-3" data-step="2" data-field="Ποικιλία διατύπωσης" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ποικιλία διατύπωσης — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ποιο κίνητρο συμμόρφωσης ενεργοποιείται σε μένα;</td><td class="g">Ακρίβεια / Αποδοχή / Αυτοεικόνα — διάλεξε και εξήγησε.</td><td class="ex">Ακρίβεια: σκέφτηκα «μήπως κάνω λάθος εγώ;» πριν διαβάσω έστω ένα επιχείρημα.</td><td class="ans"><textarea class="ans-in" id="a2-4" data-step="2" data-field="Ποιο κίνητρο συμμόρφωσης ενεργοποιείται σε μένα;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ποιο κίνητρο συμμόρφωσης ενεργοποιείται σε μένα; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ανεξάρτητο μέτρο</td><td class="g">Υπάρχει δημοσκόπηση, δεδομένα, ψηφοφορία, κάτι έξω από το thread?</td><td class="ex">Δημοσκόπηση ΧΧ (ημερομηνία): 41% υπέρ, 46% κατά, 13% ΔΞ/ΔΑ. Η «ομοφωνία» του thread δεν αντιστοιχεί.</td><td class="ans"><textarea class="ans-in" id="a2-5" data-step="2" data-field="Ανεξάρτητο μέτρο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ανεξάρτητο μέτρο — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Εναλλακτική εξήγηση</td><td class="g">Πώς θα εξηγούσες τους αριθμούς χωρίς συντονισμό?</td><td class="ex">Το post μοιράστηκε σε κλειστή ομάδα υποστηρικτών· η συγκέντρωση σχολίων μπορεί να είναι οργανική κινητοποίηση.</td><td class="ans"><textarea class="ans-in" id="a2-6" data-step="2" data-field="Εναλλακτική εξήγηση" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Εναλλακτική εξήγηση — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πηγή / τεκμήριο</td><td class="g">URL, screenshot με ώρα, αρχείο.</td><td class="ex">Screenshot thread με timestamps (06/09, 21:14), link δημοσκόπησης.</td><td class="ans"><textarea class="ans-in" id="a2-7" data-step="2" data-field="Πηγή / τεκμήριο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πηγή / τεκμήριο — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -219,6 +245,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Μέτρια — ο συγχρονισμός είναι μετρήσιμος, αλλά η οργανική κινητοποίηση δεν αποκλείεται.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Δεν απαντώ με «κι εμείς είμαστε πολλοί». Ποστάρω το ανεξάρτητο μέτρο με πηγή, μία φορά, χωρίς να απευθύνομαι σε συγκεκριμένους λογαριασμούς.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-2" data-step="2"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-2" data-step="2" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 <article class="step" id="vima-3">
@@ -240,15 +271,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Ποιος σταμάτησε να μιλάει, τι το προκάλεσε, και πόσες από τις «απαντήσεις» αφορούσαν το επιχείρημα;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Το κριτικό σχόλιο</td><td class="g">Τι έλεγε? Είχε στοιχεία/πηγή?</td><td class="ex">Χρήστης έγραψε: «Το ποσό που αναφέρετε δεν συμφωνεί με τον προϋπολογισμό, σελ. 14» και έβαλε link στο ΦΕΚ.</td></tr>
-<tr><td class="lbl">Απαντήσεις: επί της ουσίας vs. επί του προσώπου</td><td class="g">Μέτρησε. Πόσες αφορούν το επιχείρημα, πόσες τον άνθρωπο?</td><td class="ex">23 απαντήσεις: 2 επί της ουσίας (χωρίς πηγή), 21 επί του προσώπου.</td></tr>
-<tr><td class="lbl">Τύπος πίεσης</td><td class="g">Κατέγραψε τις φράσεις-τιμωρίες.</td><td class="ex">«ποιος σε πληρώνει», «πόσα πήρες», «εσύ πού ήσουν το 20ΧΧ», «βγήκε ο ειδικός».</td></tr>
-<tr><td class="lbl">Τι έγινε μετά</td><td class="g">Ο σχολιαστής απάντησε, σιώπησε, έσβησε το σχόλιο?</td><td class="ex">Ο σχολιαστής δεν ξαναγράψε. Δύο άλλοι που είχαν κάνει like στο σχόλιό του το αφαίρεσαν.</td></tr>
-<tr><td class="lbl">Mindguards</td><td class="g">Υπάρχουν λογαριασμοί που «προστατεύουν» σταθερά την ομάδα σε κάθε thread?</td><td class="ex">3 λογαριασμοί εμφανίζονται πρώτοι σε κάθε κριτικό σχόλιο της σελίδας τις τελευταίες 2 εβδομάδες.</td></tr>
-<tr><td class="lbl">Ποιος λείπει από τη συζήτηση;</td><td class="g">Ποιες φωνές θα περίμενες να δεις και δεν βλέπεις?</td><td class="ex">Κανένας ειδικός του αντικειμένου δεν σχολιάζει πια κάτω από τις αναρτήσεις της σελίδας.</td></tr>
-<tr><td class="lbl">Η δική μου αυτολογοκρισία</td><td class="g">Έγραψες κάτι και το έσβησες? Γιατί?</td><td class="ex">Ναι. Σκέφτηκα «δεν θέλω να μπλέξω», όχι «μήπως έχουν δίκιο».</td></tr>
-<tr><td class="lbl">Πηγή / τεκμήριο</td><td class="g">Screenshot πριν διαγραφούν σχόλια, με ώρα.</td><td class="ex">Screenshot 06/09 22:40, αρχειοθέτηση σε archive.org.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Το κριτικό σχόλιο</td><td class="g">Τι έλεγε? Είχε στοιχεία/πηγή?</td><td class="ex">Χρήστης έγραψε: «Το ποσό που αναφέρετε δεν συμφωνεί με τον προϋπολογισμό, σελ. 14» και έβαλε link στο ΦΕΚ.</td><td class="ans"><textarea class="ans-in" id="a3-1" data-step="3" data-field="Το κριτικό σχόλιο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Το κριτικό σχόλιο — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Απαντήσεις: επί της ουσίας vs. επί του προσώπου</td><td class="g">Μέτρησε. Πόσες αφορούν το επιχείρημα, πόσες τον άνθρωπο?</td><td class="ex">23 απαντήσεις: 2 επί της ουσίας (χωρίς πηγή), 21 επί του προσώπου.</td><td class="ans"><textarea class="ans-in" id="a3-2" data-step="3" data-field="Απαντήσεις: επί της ουσίας vs. επί του προσώπου" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Απαντήσεις: επί της ουσίας vs. επί του προσώπου — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τύπος πίεσης</td><td class="g">Κατέγραψε τις φράσεις-τιμωρίες.</td><td class="ex">«ποιος σε πληρώνει», «πόσα πήρες», «εσύ πού ήσουν το 20ΧΧ», «βγήκε ο ειδικός».</td><td class="ans"><textarea class="ans-in" id="a3-3" data-step="3" data-field="Τύπος πίεσης" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τύπος πίεσης — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι έγινε μετά</td><td class="g">Ο σχολιαστής απάντησε, σιώπησε, έσβησε το σχόλιο?</td><td class="ex">Ο σχολιαστής δεν ξαναγράψε. Δύο άλλοι που είχαν κάνει like στο σχόλιό του το αφαίρεσαν.</td><td class="ans"><textarea class="ans-in" id="a3-4" data-step="3" data-field="Τι έγινε μετά" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι έγινε μετά — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Mindguards</td><td class="g">Υπάρχουν λογαριασμοί που «προστατεύουν» σταθερά την ομάδα σε κάθε thread?</td><td class="ex">3 λογαριασμοί εμφανίζονται πρώτοι σε κάθε κριτικό σχόλιο της σελίδας τις τελευταίες 2 εβδομάδες.</td><td class="ans"><textarea class="ans-in" id="a3-5" data-step="3" data-field="Mindguards" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Mindguards — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ποιος λείπει από τη συζήτηση;</td><td class="g">Ποιες φωνές θα περίμενες να δεις και δεν βλέπεις?</td><td class="ex">Κανένας ειδικός του αντικειμένου δεν σχολιάζει πια κάτω από τις αναρτήσεις της σελίδας.</td><td class="ans"><textarea class="ans-in" id="a3-6" data-step="3" data-field="Ποιος λείπει από τη συζήτηση;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ποιος λείπει από τη συζήτηση; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Η δική μου αυτολογοκρισία</td><td class="g">Έγραψες κάτι και το έσβησες? Γιατί?</td><td class="ex">Ναι. Σκέφτηκα «δεν θέλω να μπλέξω», όχι «μήπως έχουν δίκιο».</td><td class="ans"><textarea class="ans-in" id="a3-7" data-step="3" data-field="Η δική μου αυτολογοκρισία" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Η δική μου αυτολογοκρισία — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πηγή / τεκμήριο</td><td class="g">Screenshot πριν διαγραφούν σχόλια, με ώρα.</td><td class="ex">Screenshot 06/09 22:40, αρχειοθέτηση σε archive.org.</td><td class="ans"><textarea class="ans-in" id="a3-8" data-step="3" data-field="Πηγή / τεκμήριο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πηγή / τεκμήριο — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -263,6 +294,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Υψηλή για το μοτίβο τιμωρίας (μετρήσιμο)· Χαμηλή για το αν είναι οργανωμένο.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Δεν επιτίθεμαι στους «τιμωρούς». Απαντώ στο αρχικό σχόλιο με ένα «ευχαριστώ για την πηγή, το κοίταξα και επιβεβαιώνεται/δεν επιβεβαιώνεται». Το σπιράλ σπάει όταν κάποιος μιλά ήρεμα επί της ουσίας.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-3" data-step="3"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-3" data-step="3" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 <article class="step" id="vima-4">
@@ -284,15 +320,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Ποια σημάδια, μετρημένα σε πολλά προφίλ μαζί, δείχνουν συντονισμό — και ποια εναλλακτική εξήγηση πρέπει να αποκλείσω πρώτα;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Το δείγμα λογαριασμών</td><td class="g">Πόσους παρατηρείς και πού?</td><td class="ex">12 λογαριασμοί που σχολίασαν υπέρ, κάτω από 3 διαφορετικές αναρτήσεις την ίδια μέρα.</td></tr>
-<tr><td class="lbl">Ηλικία &amp; ιστορικό προφίλ</td><td class="g">Ημερομηνία δημιουργίας, αριθμός αναρτήσεων, φίλοι/ακόλουθοι.</td><td class="ex">9 από τους 12 δημιουργήθηκαν μέσα σε 3 εβδομάδες (Ιούνιος), έχουν &lt;30 ακόλουθους, καμία προσωπική ανάρτηση.</td></tr>
-<tr><td class="lbl">Ώρες δραστηριότητας</td><td class="g">Πότε ποστάρουν? Υπάρχει «ωράριο»?</td><td class="ex">Το 87% των σχολίων τους: Δευ–Παρ, 09:00–17:00. Καμία δραστηριότητα Σαββατοκύριακο ή αργία.</td></tr>
-<tr><td class="lbl">Ύφος &amp; λεξιλόγιο</td><td class="g">Κοινές φράσεις, ίδια σημεία στίξης, ίδια λάθη?</td><td class="ex">Όλοι γράφουν «…» με τρεις τελείες και τη φράση «απλά λέω τα αυτονόητα». Δύο έχουν το ίδιο ορθογραφικό λάθος.</td></tr>
-<tr><td class="lbl">Άλλα θέματα που σχολιάζουν</td><td class="g">Έχουν ζωή έξω από το θέμα? Ή μόνο αυτό?</td><td class="ex">Κανένας δεν σχολιάζει ποδόσφαιρο, μαγειρική, τοπικά. Μόνο το θέμα Χ — και πάντα την ίδια γραμμή.</td></tr>
-<tr><td class="lbl">Φωτογραφίες προφίλ</td><td class="g">Stock photos? Αντίστροφη αναζήτηση εικόνας.</td><td class="ex">4 από τις 12 φωτογραφίες βρέθηκαν σε stock sites με αντίστροφη αναζήτηση.</td></tr>
-<tr><td class="lbl">Εναλλακτική εξήγηση</td><td class="g">Νέοι χρήστες που ενεργοποιήθηκαν οργανικά? Εργαζόμενοι που σχολιάζουν στο διάλειμμα?</td><td class="ex">Μπορεί να είναι ομάδα υποστηρικτών που άνοιξε προφίλ για την προεκλογική. Το ωράριο και τα stock photos το κάνουν λιγότερο πιθανό, όχι αδύνατο.</td></tr>
-<tr><td class="lbl">Πηγή / τεκμήριο</td><td class="g">Λίστα λογαριασμών, screenshots, αποτελέσματα αντίστροφης αναζήτησης.</td><td class="ex">Spreadsheet με 12 γραμμές: όνομα, ημ. δημιουργίας, ώρες, φράσεις, link.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Το δείγμα λογαριασμών</td><td class="g">Πόσους παρατηρείς και πού?</td><td class="ex">12 λογαριασμοί που σχολίασαν υπέρ, κάτω από 3 διαφορετικές αναρτήσεις την ίδια μέρα.</td><td class="ans"><textarea class="ans-in" id="a4-1" data-step="4" data-field="Το δείγμα λογαριασμών" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Το δείγμα λογαριασμών — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ηλικία &amp; ιστορικό προφίλ</td><td class="g">Ημερομηνία δημιουργίας, αριθμός αναρτήσεων, φίλοι/ακόλουθοι.</td><td class="ex">9 από τους 12 δημιουργήθηκαν μέσα σε 3 εβδομάδες (Ιούνιος), έχουν &lt;30 ακόλουθους, καμία προσωπική ανάρτηση.</td><td class="ans"><textarea class="ans-in" id="a4-2" data-step="4" data-field="Ηλικία &amp; ιστορικό προφίλ" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ηλικία &amp; ιστορικό προφίλ — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ώρες δραστηριότητας</td><td class="g">Πότε ποστάρουν? Υπάρχει «ωράριο»?</td><td class="ex">Το 87% των σχολίων τους: Δευ–Παρ, 09:00–17:00. Καμία δραστηριότητα Σαββατοκύριακο ή αργία.</td><td class="ans"><textarea class="ans-in" id="a4-3" data-step="4" data-field="Ώρες δραστηριότητας" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ώρες δραστηριότητας — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ύφος &amp; λεξιλόγιο</td><td class="g">Κοινές φράσεις, ίδια σημεία στίξης, ίδια λάθη?</td><td class="ex">Όλοι γράφουν «…» με τρεις τελείες και τη φράση «απλά λέω τα αυτονόητα». Δύο έχουν το ίδιο ορθογραφικό λάθος.</td><td class="ans"><textarea class="ans-in" id="a4-4" data-step="4" data-field="Ύφος &amp; λεξιλόγιο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ύφος &amp; λεξιλόγιο — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Άλλα θέματα που σχολιάζουν</td><td class="g">Έχουν ζωή έξω από το θέμα? Ή μόνο αυτό?</td><td class="ex">Κανένας δεν σχολιάζει ποδόσφαιρο, μαγειρική, τοπικά. Μόνο το θέμα Χ — και πάντα την ίδια γραμμή.</td><td class="ans"><textarea class="ans-in" id="a4-5" data-step="4" data-field="Άλλα θέματα που σχολιάζουν" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Άλλα θέματα που σχολιάζουν — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Φωτογραφίες προφίλ</td><td class="g">Stock photos? Αντίστροφη αναζήτηση εικόνας.</td><td class="ex">4 από τις 12 φωτογραφίες βρέθηκαν σε stock sites με αντίστροφη αναζήτηση.</td><td class="ans"><textarea class="ans-in" id="a4-6" data-step="4" data-field="Φωτογραφίες προφίλ" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Φωτογραφίες προφίλ — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Εναλλακτική εξήγηση</td><td class="g">Νέοι χρήστες που ενεργοποιήθηκαν οργανικά? Εργαζόμενοι που σχολιάζουν στο διάλειμμα?</td><td class="ex">Μπορεί να είναι ομάδα υποστηρικτών που άνοιξε προφίλ για την προεκλογική. Το ωράριο και τα stock photos το κάνουν λιγότερο πιθανό, όχι αδύνατο.</td><td class="ans"><textarea class="ans-in" id="a4-7" data-step="4" data-field="Εναλλακτική εξήγηση" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Εναλλακτική εξήγηση — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πηγή / τεκμήριο</td><td class="g">Λίστα λογαριασμών, screenshots, αποτελέσματα αντίστροφης αναζήτησης.</td><td class="ex">Spreadsheet με 12 γραμμές: όνομα, ημ. δημιουργίας, ώρες, φράσεις, link.</td><td class="ans"><textarea class="ans-in" id="a4-8" data-step="4" data-field="Πηγή / τεκμήριο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πηγή / τεκμήριο — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -307,6 +343,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Μέτρια — πολλά ταυτόχρονα σημάδια, αλλά καμία απόδειξη κεντρικού συντονισμού. Ένδειξη προς περαιτέρω έλεγχο.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Δεν γράφω «είναι τρολ» δημόσια. Κάνω report για inauthentic behavior στην πλατφόρμα και κρατάω το αρχείο. Αν το μοτίβο συνεχιστεί, το δίνω σε δημοσιογράφο/ερευνητή που μπορεί να το ελέγξει.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-4" data-step="4"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-4" data-step="4" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 </section>
@@ -333,15 +374,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Ποιος μεσολαβεί ανάμεσα στην αρχική πηγή και σε μένα, τι πρόσθεσε στη μεταφορά, και έχει δηλώσει τη σχέση του;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Αρχική πηγή (Βήμα 1 του flow)</td><td class="g">Ποιος είπε πρώτος το μήνυμα και πότε?</td><td class="ex">Ανακοίνωση επίσημου φορέα, Τρίτη 10:30: «Το μέτρο Χ είναι αναγκαίο για τη σταθερότητα».</td></tr>
-<tr><td class="lbl">Μεσάζων (Βήμα 2 του flow)</td><td class="g">Ποιος το ξαναείπε? Σελίδα, πρόσωπο, πάνελ?</td><td class="ex">Σελίδα memes με 180Κ ακόλουθους, Τρίτη 13:05, meme με το ίδιο νόημα και caption «απλά λέμε τα αυτονόητα».</td></tr>
-<tr><td class="lbl">Χρόνος πηγής → μεσάζοντα</td><td class="g">Πόση ώρα πέρασε? Επαναλαμβάνεται το διάστημα?</td><td class="ex">2,5 ώρες. Τις τελευταίες 6 φορές που ο φορέας ανακοίνωσε κάτι, η σελίδα το «σχολίασε» εντός 1–4 ωρών.</td></tr>
-<tr><td class="lbl">Τι πρόσθεσε / τι αφαίρεσε ο μεσάζων</td><td class="g">Χιούμορ, θυμό, απλοποίηση? Έκοψε τις επιφυλάξεις?</td><td class="ex">Πρόσθεσε ειρωνεία για τους «γκρινιάρηδες». Αφαίρεσε την παράγραφο της ανακοίνωσης που έλεγε «υπό προϋποθέσεις».</td></tr>
-<tr><td class="lbl">Δηλωμένη σχέση / χορηγία</td><td class="g">Υπάρχει disclosure? Ποιος διαχειρίζεται τη σελίδα (Page Transparency)?</td><td class="ex">Καμία δήλωση. Page Transparency: 3 διαχειριστές, χώρα: Ελλάδα, όνομα άλλαξε 2 φορές το 2025.</td></tr>
-<tr><td class="lbl">Πόσοι μεσάζοντες, ίδια γραμμή</td><td class="g">Εντόπισε ≥3 «ανεξάρτητους» με το ίδιο μήνυμα την ίδια μέρα.</td><td class="ex">3 σελίδες memes + 1 σχολιαστής πάνελ, ίδιο βασικό επιχείρημα, ίδια λέξη-κλειδί («σταθερότητα»), 12 ώρες.</td></tr>
-<tr><td class="lbl">Τι θα ζητούσα να αποκαλυφθεί</td><td class="g">Ποια μία πληροφορία θα ξεκαθάριζε τη σχέση?</td><td class="ex">Αν η σελίδα ή οι διαχειριστές της αμείβονται από φορέα/κόμμα/εταιρεία επικοινωνίας.</td></tr>
-<tr><td class="lbl">Πηγή / τεκμήριο</td><td class="g">Screenshots με ώρα, Page Transparency, link ανακοίνωσης.</td><td class="ex">Πίνακας 6 ζευγών (ανακοίνωση → meme) με timestamps.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Αρχική πηγή (Βήμα 1 του flow)</td><td class="g">Ποιος είπε πρώτος το μήνυμα και πότε?</td><td class="ex">Ανακοίνωση επίσημου φορέα, Τρίτη 10:30: «Το μέτρο Χ είναι αναγκαίο για τη σταθερότητα».</td><td class="ans"><textarea class="ans-in" id="a5-1" data-step="5" data-field="Αρχική πηγή (Βήμα 1 του flow)" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Αρχική πηγή (Βήμα 1 του flow) — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Μεσάζων (Βήμα 2 του flow)</td><td class="g">Ποιος το ξαναείπε? Σελίδα, πρόσωπο, πάνελ?</td><td class="ex">Σελίδα memes με 180Κ ακόλουθους, Τρίτη 13:05, meme με το ίδιο νόημα και caption «απλά λέμε τα αυτονόητα».</td><td class="ans"><textarea class="ans-in" id="a5-2" data-step="5" data-field="Μεσάζων (Βήμα 2 του flow)" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Μεσάζων (Βήμα 2 του flow) — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Χρόνος πηγής → μεσάζοντα</td><td class="g">Πόση ώρα πέρασε? Επαναλαμβάνεται το διάστημα?</td><td class="ex">2,5 ώρες. Τις τελευταίες 6 φορές που ο φορέας ανακοίνωσε κάτι, η σελίδα το «σχολίασε» εντός 1–4 ωρών.</td><td class="ans"><textarea class="ans-in" id="a5-3" data-step="5" data-field="Χρόνος πηγής → μεσάζοντα" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Χρόνος πηγής → μεσάζοντα — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι πρόσθεσε / τι αφαίρεσε ο μεσάζων</td><td class="g">Χιούμορ, θυμό, απλοποίηση? Έκοψε τις επιφυλάξεις?</td><td class="ex">Πρόσθεσε ειρωνεία για τους «γκρινιάρηδες». Αφαίρεσε την παράγραφο της ανακοίνωσης που έλεγε «υπό προϋποθέσεις».</td><td class="ans"><textarea class="ans-in" id="a5-4" data-step="5" data-field="Τι πρόσθεσε / τι αφαίρεσε ο μεσάζων" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι πρόσθεσε / τι αφαίρεσε ο μεσάζων — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Δηλωμένη σχέση / χορηγία</td><td class="g">Υπάρχει disclosure? Ποιος διαχειρίζεται τη σελίδα (Page Transparency)?</td><td class="ex">Καμία δήλωση. Page Transparency: 3 διαχειριστές, χώρα: Ελλάδα, όνομα άλλαξε 2 φορές το 2025.</td><td class="ans"><textarea class="ans-in" id="a5-5" data-step="5" data-field="Δηλωμένη σχέση / χορηγία" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Δηλωμένη σχέση / χορηγία — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πόσοι μεσάζοντες, ίδια γραμμή</td><td class="g">Εντόπισε ≥3 «ανεξάρτητους» με το ίδιο μήνυμα την ίδια μέρα.</td><td class="ex">3 σελίδες memes + 1 σχολιαστής πάνελ, ίδιο βασικό επιχείρημα, ίδια λέξη-κλειδί («σταθερότητα»), 12 ώρες.</td><td class="ans"><textarea class="ans-in" id="a5-6" data-step="5" data-field="Πόσοι μεσάζοντες, ίδια γραμμή" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πόσοι μεσάζοντες, ίδια γραμμή — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι θα ζητούσα να αποκαλυφθεί</td><td class="g">Ποια μία πληροφορία θα ξεκαθάριζε τη σχέση?</td><td class="ex">Αν η σελίδα ή οι διαχειριστές της αμείβονται από φορέα/κόμμα/εταιρεία επικοινωνίας.</td><td class="ans"><textarea class="ans-in" id="a5-7" data-step="5" data-field="Τι θα ζητούσα να αποκαλυφθεί" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι θα ζητούσα να αποκαλυφθεί — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πηγή / τεκμήριο</td><td class="g">Screenshots με ώρα, Page Transparency, link ανακοίνωσης.</td><td class="ex">Πίνακας 6 ζευγών (ανακοίνωση → meme) με timestamps.</td><td class="ans"><textarea class="ans-in" id="a5-8" data-step="5" data-field="Πηγή / τεκμήριο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πηγή / τεκμήριο — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -356,6 +397,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Μέτρια — ο επαναλαμβανόμενος συγχρονισμός είναι τεκμηριωμένος· η οικονομική σχέση παραμένει άγνωστη.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Ρωτάω δημόσια τη σελίδα αν έχει σχέση με τον φορέα. Ζητώ disclosure, όχι απολογία. Δεν αναδημοσιεύω το meme ούτε για να το κρίνω.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-5" data-step="5"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-5" data-step="5" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 <article class="step" id="vima-6">
@@ -377,15 +423,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Το μήνυμα με προσκαλεί να σκεφτώ ή μου δίνει σήματα για να μη χρειαστεί — και σε ποια κατάσταση με βρίσκει;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Το μήνυμα</td><td class="g">Τίτλος ή post, όπως εμφανίζεται.</td><td class="ex">«ΣΟΚ: Ο ειδικός αποκαλύπτει — όλοι το ξέρουν, μόνο οι προδότες διαφωνούν».</td></tr>
-<tr><td class="lbl">Επιχειρήματα (κεντρική οδός)</td><td class="g">Πόσα πραγματικά επιχειρήματα περιέχει? Έχουν δεδομένα?</td><td class="ex">0 επιχειρήματα με δεδομένα. 1 ισχυρισμός χωρίς πηγή.</td></tr>
-<tr><td class="lbl">Cues (περιφερειακή οδός)</td><td class="g">Κατέγραψε κάθε σήμα: αυθεντία, πλήθος, συναίσθημα, μορφή.</td><td class="ex">Αυθεντία («ο ειδικός», ανώνυμος) · Πλήθος («όλοι το ξέρουν») · Συναίσθημα («ΣΟΚ», «προδότες») · Μορφή (κεφαλαία, κόκκινο).</td></tr>
-<tr><td class="lbl">Η δική μου κατάσταση</td><td class="g">Χρόνος, κόπωση, όγκος θεμάτων που είδα σήμερα.</td><td class="ex">23:40, μετά από ~3 ώρες feed, το 7ο «θέμα ημέρας». Δεν είχα ενέργεια να ανοίξω το link.</td></tr>
-<tr><td class="lbl">Ποια οδός ενεργοποιήθηκε;</td><td class="g">Κεντρική ή περιφερειακή? Πώς το κατάλαβες?</td><td class="ex">Περιφερειακή: συμφώνησα/διαφώνησα μέσα σε 3 δευτερόλεπτα, με βάση τη λέξη «προδότες», όχι το περιεχόμενο.</td></tr>
-<tr><td class="lbl">Ρυθμός θεμάτων</td><td class="g">Πόσα «μεγάλα θέματα» αυτή την εβδομάδα? Πόσο κράτησε το καθένα?</td><td class="ex">4 «θέματα εβδομάδας» σε 7 μέρες. Κανένα δεν κράτησε πάνω από 48 ώρες.</td></tr>
-<tr><td class="lbl">Τι θα χρειαζόμουν για κεντρική επεξεργασία</td><td class="g">Ποιο στοιχείο, ποιον χρόνο, ποια πηγή?</td><td class="ex">Το όνομα του ειδικού, την πρωτογενή μελέτη, 15 λεπτά το πρωί αντί για 3 δευτερόλεπτα τα μεσάνυχτα.</td></tr>
-<tr><td class="lbl">Πηγή / claim check</td><td class="g">Ελέγχθηκε ο ισχυρισμός? Πού?</td><td class="ex">Αναζήτηση: ο «ειδικός» δεν κατονομάζεται σε κανένα από τα 5 sites που αναπαράγουν τον τίτλο.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Το μήνυμα</td><td class="g">Τίτλος ή post, όπως εμφανίζεται.</td><td class="ex">«ΣΟΚ: Ο ειδικός αποκαλύπτει — όλοι το ξέρουν, μόνο οι προδότες διαφωνούν».</td><td class="ans"><textarea class="ans-in" id="a6-1" data-step="6" data-field="Το μήνυμα" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Το μήνυμα — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Επιχειρήματα (κεντρική οδός)</td><td class="g">Πόσα πραγματικά επιχειρήματα περιέχει? Έχουν δεδομένα?</td><td class="ex">0 επιχειρήματα με δεδομένα. 1 ισχυρισμός χωρίς πηγή.</td><td class="ans"><textarea class="ans-in" id="a6-2" data-step="6" data-field="Επιχειρήματα (κεντρική οδός)" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Επιχειρήματα (κεντρική οδός) — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Cues (περιφερειακή οδός)</td><td class="g">Κατέγραψε κάθε σήμα: αυθεντία, πλήθος, συναίσθημα, μορφή.</td><td class="ex">Αυθεντία («ο ειδικός», ανώνυμος) · Πλήθος («όλοι το ξέρουν») · Συναίσθημα («ΣΟΚ», «προδότες») · Μορφή (κεφαλαία, κόκκινο).</td><td class="ans"><textarea class="ans-in" id="a6-3" data-step="6" data-field="Cues (περιφερειακή οδός)" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Cues (περιφερειακή οδός) — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Η δική μου κατάσταση</td><td class="g">Χρόνος, κόπωση, όγκος θεμάτων που είδα σήμερα.</td><td class="ex">23:40, μετά από ~3 ώρες feed, το 7ο «θέμα ημέρας». Δεν είχα ενέργεια να ανοίξω το link.</td><td class="ans"><textarea class="ans-in" id="a6-4" data-step="6" data-field="Η δική μου κατάσταση" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Η δική μου κατάσταση — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ποια οδός ενεργοποιήθηκε;</td><td class="g">Κεντρική ή περιφερειακή? Πώς το κατάλαβες?</td><td class="ex">Περιφερειακή: συμφώνησα/διαφώνησα μέσα σε 3 δευτερόλεπτα, με βάση τη λέξη «προδότες», όχι το περιεχόμενο.</td><td class="ans"><textarea class="ans-in" id="a6-5" data-step="6" data-field="Ποια οδός ενεργοποιήθηκε;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ποια οδός ενεργοποιήθηκε; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ρυθμός θεμάτων</td><td class="g">Πόσα «μεγάλα θέματα» αυτή την εβδομάδα? Πόσο κράτησε το καθένα?</td><td class="ex">4 «θέματα εβδομάδας» σε 7 μέρες. Κανένα δεν κράτησε πάνω από 48 ώρες.</td><td class="ans"><textarea class="ans-in" id="a6-6" data-step="6" data-field="Ρυθμός θεμάτων" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ρυθμός θεμάτων — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι θα χρειαζόμουν για κεντρική επεξεργασία</td><td class="g">Ποιο στοιχείο, ποιον χρόνο, ποια πηγή?</td><td class="ex">Το όνομα του ειδικού, την πρωτογενή μελέτη, 15 λεπτά το πρωί αντί για 3 δευτερόλεπτα τα μεσάνυχτα.</td><td class="ans"><textarea class="ans-in" id="a6-7" data-step="6" data-field="Τι θα χρειαζόμουν για κεντρική επεξεργασία" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι θα χρειαζόμουν για κεντρική επεξεργασία — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πηγή / claim check</td><td class="g">Ελέγχθηκε ο ισχυρισμός? Πού?</td><td class="ex">Αναζήτηση: ο «ειδικός» δεν κατονομάζεται σε κανένα από τα 5 sites που αναπαράγουν τον τίτλο.</td><td class="ans"><textarea class="ans-in" id="a6-8" data-step="6" data-field="Πηγή / claim check" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πηγή / claim check — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -400,6 +446,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Υψηλή για τη δομή του μηνύματος (μετρήσιμη: 0 επιχειρήματα, 4 cues). Δεν αφορά πρόθεση.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Δεν αντιδρώ τα μεσάνυχτα. Αποθηκεύω, ανοίγω το πρωί, ψάχνω την πρωτογενή πηγή. Αν δεν υπάρχει, το θέμα κλείνει εκεί.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-6" data-step="6"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-6" data-step="6" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 </section>
@@ -426,15 +477,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Ποιο πρόβλημα, ποιος «ένοχος», και υπάρχει αιτιώδης μηχανισμός ή μόνο ένταση;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Το πρόβλημα</td><td class="g">Το πραγματικό ζήτημα, όπως το ζει ο πολίτης.</td><td class="ex">Αύξηση 18% στο ενοίκιο σε ένα χρόνο.</td></tr>
-<tr><td class="lbl">Ο «ένοχος» που προτείνεται</td><td class="g">Ποια ομάδα κατηγορείται? Με ποιες λέξεις?</td><td class="ex">«Οι ξένοι που αγοράζουν σπίτια» — χωρίς αριθμούς, χωρίς περιοχές, χωρίς χρονική σύγκριση.</td></tr>
-<tr><td class="lbl">Ο αιτιώδης μηχανισμός</td><td class="g">Πώς ΑΚΡΙΒΩΣ ο ένοχος προκαλεί το πρόβλημα? Αν δεν μπορείς να το γράψεις, σημείωσέ το.</td><td class="ex">Δεν δίνεται. Η ανάρτηση επαναλαμβάνει την κατηγορία 3 φορές με αυξανόμενη ένταση.</td></tr>
-<tr><td class="lbl">Τα δεδομένα</td><td class="g">Τι λένε τα διαθέσιμα στοιχεία για τη σχέση ενόχου–προβλήματος?</td><td class="ex">Στοιχεία ΧΧ: αγορές από μη κατοίκους &lt;5% των συναλλαγών στην περιοχή. Δεν αρκούν για +18%.</td></tr>
-<tr><td class="lbl">Παράγοντες που αποσιωπούνται</td><td class="g">Τι άλλο θα μπορούσε να εξηγεί το πρόβλημα?</td><td class="ex">Βραχυχρόνια μίσθωση, έλλειψη κοινωνικής κατοικίας, φορολογική πολιτική, επιτόκια, εισοδήματα.</td></tr>
-<tr><td class="lbl">Στερεότυπο / διχοτομία</td><td class="g">Πώς περιγράφεται ο ένοχος? «Εμείς vs αυτοί»?</td><td class="ex">«Εμείς οι έντιμοι» vs «αυτοί που δεν σέβονται». Ηθικός χαρακτηρισμός, όχι οικονομική ανάλυση.</td></tr>
-<tr><td class="lbl">Ποιος ωφελείται από τη μετατόπιση</td><td class="g">Ποιος δεν συζητείται όσο συζητείται ο ένοχος?</td><td class="ex">Όποιος αποφασίζει για τους παράγοντες της προηγούμενης γραμμής.</td></tr>
-<tr><td class="lbl">Ρυθμός αλλαγής ενόχου</td><td class="g">Ποιος ήταν ο «ένοχος» την προηγούμενη και την προ-προηγούμενη εβδομάδα?</td><td class="ex">Εβδ. 1: «οι woke». Εβδ. 2: «οι ελίτ». Εβδ. 3: «οι ξένοι». Το πρόβλημα ίδιο, ο ένοχος εβδομαδιαίος.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Το πρόβλημα</td><td class="g">Το πραγματικό ζήτημα, όπως το ζει ο πολίτης.</td><td class="ex">Αύξηση 18% στο ενοίκιο σε ένα χρόνο.</td><td class="ans"><textarea class="ans-in" id="a7-1" data-step="7" data-field="Το πρόβλημα" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Το πρόβλημα — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ο «ένοχος» που προτείνεται</td><td class="g">Ποια ομάδα κατηγορείται? Με ποιες λέξεις?</td><td class="ex">«Οι ξένοι που αγοράζουν σπίτια» — χωρίς αριθμούς, χωρίς περιοχές, χωρίς χρονική σύγκριση.</td><td class="ans"><textarea class="ans-in" id="a7-2" data-step="7" data-field="Ο «ένοχος» που προτείνεται" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ο «ένοχος» που προτείνεται — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ο αιτιώδης μηχανισμός</td><td class="g">Πώς ΑΚΡΙΒΩΣ ο ένοχος προκαλεί το πρόβλημα? Αν δεν μπορείς να το γράψεις, σημείωσέ το.</td><td class="ex">Δεν δίνεται. Η ανάρτηση επαναλαμβάνει την κατηγορία 3 φορές με αυξανόμενη ένταση.</td><td class="ans"><textarea class="ans-in" id="a7-3" data-step="7" data-field="Ο αιτιώδης μηχανισμός" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ο αιτιώδης μηχανισμός — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τα δεδομένα</td><td class="g">Τι λένε τα διαθέσιμα στοιχεία για τη σχέση ενόχου–προβλήματος?</td><td class="ex">Στοιχεία ΧΧ: αγορές από μη κατοίκους &lt;5% των συναλλαγών στην περιοχή. Δεν αρκούν για +18%.</td><td class="ans"><textarea class="ans-in" id="a7-4" data-step="7" data-field="Τα δεδομένα" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τα δεδομένα — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Παράγοντες που αποσιωπούνται</td><td class="g">Τι άλλο θα μπορούσε να εξηγεί το πρόβλημα?</td><td class="ex">Βραχυχρόνια μίσθωση, έλλειψη κοινωνικής κατοικίας, φορολογική πολιτική, επιτόκια, εισοδήματα.</td><td class="ans"><textarea class="ans-in" id="a7-5" data-step="7" data-field="Παράγοντες που αποσιωπούνται" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Παράγοντες που αποσιωπούνται — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Στερεότυπο / διχοτομία</td><td class="g">Πώς περιγράφεται ο ένοχος? «Εμείς vs αυτοί»?</td><td class="ex">«Εμείς οι έντιμοι» vs «αυτοί που δεν σέβονται». Ηθικός χαρακτηρισμός, όχι οικονομική ανάλυση.</td><td class="ans"><textarea class="ans-in" id="a7-6" data-step="7" data-field="Στερεότυπο / διχοτομία" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Στερεότυπο / διχοτομία — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ποιος ωφελείται από τη μετατόπιση</td><td class="g">Ποιος δεν συζητείται όσο συζητείται ο ένοχος?</td><td class="ex">Όποιος αποφασίζει για τους παράγοντες της προηγούμενης γραμμής.</td><td class="ans"><textarea class="ans-in" id="a7-7" data-step="7" data-field="Ποιος ωφελείται από τη μετατόπιση" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ποιος ωφελείται από τη μετατόπιση — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ρυθμός αλλαγής ενόχου</td><td class="g">Ποιος ήταν ο «ένοχος» την προηγούμενη και την προ-προηγούμενη εβδομάδα?</td><td class="ex">Εβδ. 1: «οι woke». Εβδ. 2: «οι ελίτ». Εβδ. 3: «οι ξένοι». Το πρόβλημα ίδιο, ο ένοχος εβδομαδιαίος.</td><td class="ans"><textarea class="ans-in" id="a7-8" data-step="7" data-field="Ρυθμός αλλαγής ενόχου" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ρυθμός αλλαγής ενόχου — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -449,6 +500,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Υψηλή ότι λείπει ο μηχανισμός (ελέγξιμο)· Μέτρια ότι πρόκειται για σκόπιμη μετατόπιση.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Δεν υπερασπίζομαι τον «ένοχο» — αυτό κρατά τη συζήτηση στο πλαίσιό τους. Ρωτάω: «Πώς ακριβώς προκύπτει το +18% από αυτό? Ποια στοιχεία?» και παραθέτω τους παράγοντες που λείπουν.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-7" data-step="7"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-7" data-step="7" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 <article class="step" id="vima-8">
@@ -470,15 +526,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Ποιος ανέφερε πρώτος την κατηγορία, την παρουσίασε στην ισχυρή ή στην καρικατουρίστικη μορφή της, και την αντέκρουσε με στοιχεία ή με γέλιο;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Η κατηγορία / κριτική που «προλαμβάνεται»</td><td class="g">Τι είναι αυτό που κάποιος αναμένει να ακουστεί?</td><td class="ex">Ότι υπάρχει οργανωμένος μηχανισμός σχολιασμού που συνδέεται με τον φορέα.</td></tr>
-<tr><td class="lbl">Ποιος την ανέφερε πρώτος;</td><td class="g">Ο κατηγορούμενος, οι υποστηρικτές του, ή ο κριτικός?</td><td class="ex">Ο ίδιος ο φορέας, σε δήλωση Δευτέρα — 2 μέρες πριν δημοσιευτεί το ρεπορτάζ.</td></tr>
-<tr><td class="lbl">Ισχυρή ή καρικατουρίστικη μορφή;</td><td class="g">Πώς διατυπώθηκε? Σύγκρινε με το πώς τη διατυπώνουν σοβαρά οι κριτικοί.</td><td class="ex">Καρικατούρα: «Θα πουν τώρα ότι έχουμε τρολ, ότι φταίμε για τον καιρό και για το Wi-Fi». Το ρεπορτάζ μιλά για 40 λογαριασμούς με ωράριο.</td></tr>
-<tr><td class="lbl">Αντίκρουση: στοιχεία ή γέλιο;</td><td class="g">Δόθηκε κάποιο τεκμήριο κατά της κατηγορίας? Ή μόνο ειρωνεία?</td><td class="ex">Μόνο ειρωνεία. Κανένα στοιχείο για το ποιος διαχειρίζεται τους λογαριασμούς.</td></tr>
-<tr><td class="lbl">Τι έγινε όταν ήρθε η σοβαρή εκδοχή;</td><td class="g">Πώς αντέδρασε το κοινό/οι υποστηρικτές στο ρεπορτάζ?</td><td class="ex">Τα πρώτα 50 σχόλια κάτω από το ρεπορτάζ: «χαχα το είπαν ότι θα το πουν», «τι άλλο, ο καιρός?». Καμία αναφορά στα 40 προφίλ.</td></tr>
-<tr><td class="lbl">Τι θα δοκίμαζε την πραγματική εκδοχή;</td><td class="g">Ποιο στοιχείο θα την επιβεβαίωνε ή θα τη διέψευδε?</td><td class="ex">Στοιχεία διαχειριστών, IP/ωράριο, χρηματοδότηση. Το ρεπορτάζ δίνει τα δύο πρώτα.</td></tr>
-<tr><td class="lbl">Υγιές prebunking (για σύγκριση)</td><td class="g">Πώς θα έμοιαζε μια έντιμη προληπτική αντίκρουση?</td><td class="ex">«Θα ακούσετε ότι έχουμε 40 λογαριασμούς με ωράριο. Ορίστε ποιοι είναι οι διαχειριστές μας και γιατί δεν είναι αυτό.»</td></tr>
-<tr><td class="lbl">Πηγή / τεκμήριο</td><td class="g">Ημερομηνία δήλωσης vs ημερομηνία ρεπορτάζ, links.</td><td class="ex">Δήλωση 01/09 · Ρεπορτάζ 03/09 · screenshots σχολίων 03/09.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Η κατηγορία / κριτική που «προλαμβάνεται»</td><td class="g">Τι είναι αυτό που κάποιος αναμένει να ακουστεί?</td><td class="ex">Ότι υπάρχει οργανωμένος μηχανισμός σχολιασμού που συνδέεται με τον φορέα.</td><td class="ans"><textarea class="ans-in" id="a8-1" data-step="8" data-field="Η κατηγορία / κριτική που «προλαμβάνεται»" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Η κατηγορία / κριτική που «προλαμβάνεται» — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ποιος την ανέφερε πρώτος;</td><td class="g">Ο κατηγορούμενος, οι υποστηρικτές του, ή ο κριτικός?</td><td class="ex">Ο ίδιος ο φορέας, σε δήλωση Δευτέρα — 2 μέρες πριν δημοσιευτεί το ρεπορτάζ.</td><td class="ans"><textarea class="ans-in" id="a8-2" data-step="8" data-field="Ποιος την ανέφερε πρώτος;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ποιος την ανέφερε πρώτος; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ισχυρή ή καρικατουρίστικη μορφή;</td><td class="g">Πώς διατυπώθηκε? Σύγκρινε με το πώς τη διατυπώνουν σοβαρά οι κριτικοί.</td><td class="ex">Καρικατούρα: «Θα πουν τώρα ότι έχουμε τρολ, ότι φταίμε για τον καιρό και για το Wi-Fi». Το ρεπορτάζ μιλά για 40 λογαριασμούς με ωράριο.</td><td class="ans"><textarea class="ans-in" id="a8-3" data-step="8" data-field="Ισχυρή ή καρικατουρίστικη μορφή;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ισχυρή ή καρικατουρίστικη μορφή; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Αντίκρουση: στοιχεία ή γέλιο;</td><td class="g">Δόθηκε κάποιο τεκμήριο κατά της κατηγορίας? Ή μόνο ειρωνεία?</td><td class="ex">Μόνο ειρωνεία. Κανένα στοιχείο για το ποιος διαχειρίζεται τους λογαριασμούς.</td><td class="ans"><textarea class="ans-in" id="a8-4" data-step="8" data-field="Αντίκρουση: στοιχεία ή γέλιο;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Αντίκρουση: στοιχεία ή γέλιο; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι έγινε όταν ήρθε η σοβαρή εκδοχή;</td><td class="g">Πώς αντέδρασε το κοινό/οι υποστηρικτές στο ρεπορτάζ?</td><td class="ex">Τα πρώτα 50 σχόλια κάτω από το ρεπορτάζ: «χαχα το είπαν ότι θα το πουν», «τι άλλο, ο καιρός?». Καμία αναφορά στα 40 προφίλ.</td><td class="ans"><textarea class="ans-in" id="a8-5" data-step="8" data-field="Τι έγινε όταν ήρθε η σοβαρή εκδοχή;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι έγινε όταν ήρθε η σοβαρή εκδοχή; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι θα δοκίμαζε την πραγματική εκδοχή;</td><td class="g">Ποιο στοιχείο θα την επιβεβαίωνε ή θα τη διέψευδε?</td><td class="ex">Στοιχεία διαχειριστών, IP/ωράριο, χρηματοδότηση. Το ρεπορτάζ δίνει τα δύο πρώτα.</td><td class="ans"><textarea class="ans-in" id="a8-6" data-step="8" data-field="Τι θα δοκίμαζε την πραγματική εκδοχή;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι θα δοκίμαζε την πραγματική εκδοχή; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Υγιές prebunking (για σύγκριση)</td><td class="g">Πώς θα έμοιαζε μια έντιμη προληπτική αντίκρουση?</td><td class="ex">«Θα ακούσετε ότι έχουμε 40 λογαριασμούς με ωράριο. Ορίστε ποιοι είναι οι διαχειριστές μας και γιατί δεν είναι αυτό.»</td><td class="ans"><textarea class="ans-in" id="a8-7" data-step="8" data-field="Υγιές prebunking (για σύγκριση)" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Υγιές prebunking (για σύγκριση) — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πηγή / τεκμήριο</td><td class="g">Ημερομηνία δήλωσης vs ημερομηνία ρεπορτάζ, links.</td><td class="ex">Δήλωση 01/09 · Ρεπορτάζ 03/09 · screenshots σχολίων 03/09.</td><td class="ans"><textarea class="ans-in" id="a8-8" data-step="8" data-field="Πηγή / τεκμήριο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πηγή / τεκμήριο — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -493,6 +549,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Υψηλή για τη χρονική σειρά (τεκμηριωμένη)· Μέτρια για την πρόθεση.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Δεν γελάω μαζί τους και δεν φωνάζω. Παραθέτω τη σοβαρή διατύπωση με την πηγή της, δίπλα στην καρικατούρα, χωρίς σχόλιο. Η διαφορά μιλά μόνη της.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-8" data-step="8"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-8" data-step="8" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 <article class="step" id="vima-9">
@@ -514,15 +575,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Πόσες φορές το έχω δει, από πόσες πραγματικά ανεξάρτητες πηγές, και πού πρωτοεμφανίστηκε;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Ο ισχυρισμός</td><td class="g">Μία πρόταση, όπως κυκλοφορεί.</td><td class="ex">«Το 70% των Χ δηλώνει ότι Ψ.»</td></tr>
-<tr><td class="lbl">Πόσες φορές / πού το είδα</td><td class="g">Μέτρησε εκθέσεις: posts, τηλεόραση, συζητήσεις.</td><td class="ex">Τουλάχιστον 9 φορές σε 4 μέρες: 5 posts, 2 πάνελ, 2 συζητήσεις με γνωστούς.</td></tr>
-<tr><td class="lbl">Ίχνος πηγών (source trail)</td><td class="g">Ακολούθησε κάθε αναφορά προς τα πίσω. Πού καταλήγει?</td><td class="ex">Και τα 5 posts παραπέμπουν σε 1 άρθρο. Το άρθρο παραπέμπει σε «έρευνα» χωρίς link. Το πάνελ παραπέμπει στο άρθρο.</td></tr>
-<tr><td class="lbl">Πραγματικά ανεξάρτητες πηγές</td><td class="g">Πόσες πηγές ΔΕΝ ανάγονται στην ίδια αρχική?</td><td class="ex">1 (το άρθρο). Οι 9 εκθέσεις είναι 1 πηγή σε 9 μάσκες.</td></tr>
-<tr><td class="lbl">Πρώτη εμφάνιση</td><td class="g">Ημερομηνία, μέσο, συντάκτης.</td><td class="ex">02/09, ιστοσελίδα ΧΧ, χωρίς υπογραφή.</td></tr>
-<tr><td class="lbl">Πρωτογενές τεκμήριο</td><td class="g">Υπάρχει η «έρευνα»? Δείγμα, μεθοδολογία, φορέας?</td><td class="ex">Δεν βρέθηκε. Κανένας φορέας δημοσκοπήσεων δεν έχει δημοσιεύσει τέτοιο εύρημα.</td></tr>
-<tr><td class="lbl">Έλεγχος confirmation bias</td><td class="g">Ταιριάζει με ό,τι ήδη πίστευα? Θα το έλεγχα αν έλεγε το αντίθετο?</td><td class="ex">Ταιριάζει. Ειλικρινά, αν έλεγε το αντίθετο θα το είχα ελέγξει από την πρώτη φορά.</td></tr>
-<tr><td class="lbl">Τι επιβεβαιώνει / τι διαψεύδει</td><td class="g">Τι βρήκες στην ανεξάρτητη αναζήτηση?</td><td class="ex">Η πιο πρόσφατη δημοσιευμένη έρευνα (φορέας ΨΨ, 2026) δίνει 44%, όχι 70%.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Ο ισχυρισμός</td><td class="g">Μία πρόταση, όπως κυκλοφορεί.</td><td class="ex">«Το 70% των Χ δηλώνει ότι Ψ.»</td><td class="ans"><textarea class="ans-in" id="a9-1" data-step="9" data-field="Ο ισχυρισμός" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ο ισχυρισμός — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πόσες φορές / πού το είδα</td><td class="g">Μέτρησε εκθέσεις: posts, τηλεόραση, συζητήσεις.</td><td class="ex">Τουλάχιστον 9 φορές σε 4 μέρες: 5 posts, 2 πάνελ, 2 συζητήσεις με γνωστούς.</td><td class="ans"><textarea class="ans-in" id="a9-2" data-step="9" data-field="Πόσες φορές / πού το είδα" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πόσες φορές / πού το είδα — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ίχνος πηγών (source trail)</td><td class="g">Ακολούθησε κάθε αναφορά προς τα πίσω. Πού καταλήγει?</td><td class="ex">Και τα 5 posts παραπέμπουν σε 1 άρθρο. Το άρθρο παραπέμπει σε «έρευνα» χωρίς link. Το πάνελ παραπέμπει στο άρθρο.</td><td class="ans"><textarea class="ans-in" id="a9-3" data-step="9" data-field="Ίχνος πηγών (source trail)" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ίχνος πηγών (source trail) — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πραγματικά ανεξάρτητες πηγές</td><td class="g">Πόσες πηγές ΔΕΝ ανάγονται στην ίδια αρχική?</td><td class="ex">1 (το άρθρο). Οι 9 εκθέσεις είναι 1 πηγή σε 9 μάσκες.</td><td class="ans"><textarea class="ans-in" id="a9-4" data-step="9" data-field="Πραγματικά ανεξάρτητες πηγές" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πραγματικά ανεξάρτητες πηγές — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πρώτη εμφάνιση</td><td class="g">Ημερομηνία, μέσο, συντάκτης.</td><td class="ex">02/09, ιστοσελίδα ΧΧ, χωρίς υπογραφή.</td><td class="ans"><textarea class="ans-in" id="a9-5" data-step="9" data-field="Πρώτη εμφάνιση" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πρώτη εμφάνιση — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πρωτογενές τεκμήριο</td><td class="g">Υπάρχει η «έρευνα»? Δείγμα, μεθοδολογία, φορέας?</td><td class="ex">Δεν βρέθηκε. Κανένας φορέας δημοσκοπήσεων δεν έχει δημοσιεύσει τέτοιο εύρημα.</td><td class="ans"><textarea class="ans-in" id="a9-6" data-step="9" data-field="Πρωτογενές τεκμήριο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πρωτογενές τεκμήριο — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Έλεγχος confirmation bias</td><td class="g">Ταιριάζει με ό,τι ήδη πίστευα? Θα το έλεγχα αν έλεγε το αντίθετο?</td><td class="ex">Ταιριάζει. Ειλικρινά, αν έλεγε το αντίθετο θα το είχα ελέγξει από την πρώτη φορά.</td><td class="ans"><textarea class="ans-in" id="a9-7" data-step="9" data-field="Έλεγχος confirmation bias" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Έλεγχος confirmation bias — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι επιβεβαιώνει / τι διαψεύδει</td><td class="g">Τι βρήκες στην ανεξάρτητη αναζήτηση?</td><td class="ex">Η πιο πρόσφατη δημοσιευμένη έρευνα (φορέας ΨΨ, 2026) δίνει 44%, όχι 70%.</td><td class="ans"><textarea class="ans-in" id="a9-8" data-step="9" data-field="Τι επιβεβαιώνει / τι διαψεύδει" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι επιβεβαιώνει / τι διαψεύδει — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -537,6 +598,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Υψηλή ότι ο ισχυρισμός δεν τεκμηριώνεται· Χαμηλή για το αν η διάδοση ήταν οργανωμένη ή απλώς viral.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Δεν αναδημοσιεύω «για να το διαψεύσω» — η διάψευση επαναλαμβάνει τον ισχυρισμό. Απαντώ μόνο εκεί που ρωτήθηκα, με το σωστό νούμερο και την πηγή του.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-9" data-step="9"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-9" data-step="9" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 <article class="step" id="vima-10">
@@ -558,15 +624,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Ποιο θέμα βγήκε από την ατζέντα, ποιο μπήκε στη θέση του, πότε ακριβώς, και πού βρίσκεται σήμερα το πρώτο;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Θέμα Α — το ουσιαστικό</td><td class="g">Το θέμα με έγγραφα, ημερομηνίες, ευθύνες.</td><td class="ex">Δημοσίευμα για ανάθεση σύμβασης χωρίς διαγωνισμό, με έγγραφα. Ημέρα 0.</td></tr>
-<tr><td class="lbl">Θέμα Β — το αντικαταστάτο</td><td class="g">Το θέμα που «ξαφνικά» κυριάρχησε.</td><td class="ex">Δήλωση influencer για ένα σύμβολο. Εμφανίστηκε Ημέρα 2, 11:00.</td></tr>
-<tr><td class="lbl">Χρονογραμμή Α vs Β</td><td class="g">Πότε κορυφώθηκε το Α? Πότε εμφανίστηκε το Β? Πότε το Α εξαφανίστηκε?</td><td class="ex">Α: Ημέρες 0–2 στα trending. Β: εμφάνιση Ημέρα 2, κορύφωση Ημέρα 3. Α: εκτός trending από Ημέρα 3.</td></tr>
-<tr><td class="lbl">Χαρακτηριστικά του Β</td><td class="g">Παιδιά / σημαίες / θρησκεία / influencer / «ποιος είπε τι»? Απαιτεί στοιχεία ή μόνο θέση?</td><td class="ex">Σημαία + influencer. Δεν απαιτεί κανένα έγγραφο· μόνο να πάρεις θέση. Διχαστικό σε 2 δευτερόλεπτα.</td></tr>
-<tr><td class="lbl">Ποιος έσπρωξε πρώτος το Β</td><td class="g">Ποιοι λογαριασμοί/μέσα ανέδειξαν το Β τις πρώτες ώρες?</td><td class="ex">3 από τις σελίδες του Βήματος 5 και 2 πάνελ το ίδιο απόγευμα.</td></tr>
-<tr><td class="lbl">Πού είναι σήμερα το Α</td><td class="g">Κατάσταση: απαντήθηκε, ερευνάται, εγκαταλείφθηκε, ξεχάστηκε?</td><td class="ex">Καμία επίσημη απάντηση στα έγγραφα. Καμία αναφορά σε δελτία μετά την Ημέρα 3. Το ερώτημα παραμένει ανοιχτό.</td></tr>
-<tr><td class="lbl">Ποιος ωφελείται από τη μετατόπιση</td><td class="g">Ποιος θα έπρεπε να απαντήσει στο Α όσο συζητείται το Β?</td><td class="ex">Ο φορέας που έκανε την ανάθεση.</td></tr>
-<tr><td class="lbl">Άσκηση μνήμης</td><td class="g">Θυμήσου το προηγούμενο μεγάλο σκάνδαλο. Πότε ακριβώς σταμάτησες να ακούς γι' αυτό?</td><td class="ex">Δεν θυμάμαι. Θυμάμαι το θέμα, όχι το τέλος του. Δεν είχε τέλος — είχε αντικαταστάτη.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Θέμα Α — το ουσιαστικό</td><td class="g">Το θέμα με έγγραφα, ημερομηνίες, ευθύνες.</td><td class="ex">Δημοσίευμα για ανάθεση σύμβασης χωρίς διαγωνισμό, με έγγραφα. Ημέρα 0.</td><td class="ans"><textarea class="ans-in" id="a10-1" data-step="10" data-field="Θέμα Α — το ουσιαστικό" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Θέμα Α — το ουσιαστικό — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Θέμα Β — το αντικαταστάτο</td><td class="g">Το θέμα που «ξαφνικά» κυριάρχησε.</td><td class="ex">Δήλωση influencer για ένα σύμβολο. Εμφανίστηκε Ημέρα 2, 11:00.</td><td class="ans"><textarea class="ans-in" id="a10-2" data-step="10" data-field="Θέμα Β — το αντικαταστάτο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Θέμα Β — το αντικαταστάτο — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Χρονογραμμή Α vs Β</td><td class="g">Πότε κορυφώθηκε το Α? Πότε εμφανίστηκε το Β? Πότε το Α εξαφανίστηκε?</td><td class="ex">Α: Ημέρες 0–2 στα trending. Β: εμφάνιση Ημέρα 2, κορύφωση Ημέρα 3. Α: εκτός trending από Ημέρα 3.</td><td class="ans"><textarea class="ans-in" id="a10-3" data-step="10" data-field="Χρονογραμμή Α vs Β" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Χρονογραμμή Α vs Β — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Χαρακτηριστικά του Β</td><td class="g">Παιδιά / σημαίες / θρησκεία / influencer / «ποιος είπε τι»? Απαιτεί στοιχεία ή μόνο θέση?</td><td class="ex">Σημαία + influencer. Δεν απαιτεί κανένα έγγραφο· μόνο να πάρεις θέση. Διχαστικό σε 2 δευτερόλεπτα.</td><td class="ans"><textarea class="ans-in" id="a10-4" data-step="10" data-field="Χαρακτηριστικά του Β" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Χαρακτηριστικά του Β — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ποιος έσπρωξε πρώτος το Β</td><td class="g">Ποιοι λογαριασμοί/μέσα ανέδειξαν το Β τις πρώτες ώρες?</td><td class="ex">3 από τις σελίδες του Βήματος 5 και 2 πάνελ το ίδιο απόγευμα.</td><td class="ans"><textarea class="ans-in" id="a10-5" data-step="10" data-field="Ποιος έσπρωξε πρώτος το Β" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ποιος έσπρωξε πρώτος το Β — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Πού είναι σήμερα το Α</td><td class="g">Κατάσταση: απαντήθηκε, ερευνάται, εγκαταλείφθηκε, ξεχάστηκε?</td><td class="ex">Καμία επίσημη απάντηση στα έγγραφα. Καμία αναφορά σε δελτία μετά την Ημέρα 3. Το ερώτημα παραμένει ανοιχτό.</td><td class="ans"><textarea class="ans-in" id="a10-6" data-step="10" data-field="Πού είναι σήμερα το Α" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πού είναι σήμερα το Α — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ποιος ωφελείται από τη μετατόπιση</td><td class="g">Ποιος θα έπρεπε να απαντήσει στο Α όσο συζητείται το Β?</td><td class="ex">Ο φορέας που έκανε την ανάθεση.</td><td class="ans"><textarea class="ans-in" id="a10-7" data-step="10" data-field="Ποιος ωφελείται από τη μετατόπιση" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ποιος ωφελείται από τη μετατόπιση — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Άσκηση μνήμης</td><td class="g">Θυμήσου το προηγούμενο μεγάλο σκάνδαλο. Πότε ακριβώς σταμάτησες να ακούς γι' αυτό?</td><td class="ex">Δεν θυμάμαι. Θυμάμαι το θέμα, όχι το τέλος του. Δεν είχε τέλος — είχε αντικαταστάτη.</td><td class="ans"><textarea class="ans-in" id="a10-8" data-step="10" data-field="Άσκηση μνήμης" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Άσκηση μνήμης — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -581,6 +647,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Υψηλή για τη χρονογραμμή (δημόσια δεδομένα)· Χαμηλή–Μέτρια για το αν η αντικατάσταση ήταν σχεδιασμένη.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Δεν παίρνω θέση στο Β. Κάθε εβδομάδα, μία φορά, ρωτάω δημόσια το ίδιο: «Τι απέγινε το Α? Ορίστε τα έγγραφα.» Χωρίς οργή. Η επιμονή είναι η μόνη αντι-ατζέντα.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-10" data-step="10"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-10" data-step="10" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 <article class="step" id="vima-11">
@@ -602,15 +673,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Πόσο ψηλά ανεβαίνει η απειλή, πόσο χαμηλά κατεβαίνει η δική μου ικανότητα, και η μόνη «λύση» που προτείνεται είναι η υπακοή;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Η απειλή</td><td class="g">Τι λέγεται ότι κινδυνεύει? Με ποιες λέξεις?</td><td class="ex">«Η χώρα κινδυνεύει να γυρίσει 20 χρόνια πίσω. Αυτές είναι οι πιο κρίσιμες εκλογές από τη μεταπολίτευση.»</td></tr>
-<tr><td class="lbl">Σοβαρότητα &amp; εγγύτητα</td><td class="g">Πόσο μεγάλη και πόσο κοντά σε μένα παρουσιάζεται?</td><td class="ex">Μέγιστη σοβαρότητα (εθνική), μέγιστη εγγύτητα («η οικογένειά σου»). Χωρίς συγκεκριμένο μηχανισμό ή αριθμό.</td></tr>
-<tr><td class="lbl">Η προτεινόμενη δράση</td><td class="g">Τι ακριβώς μου ζητούν να κάνω?</td><td class="ex">«Στήριξε τη σταθερότητα.» Δηλαδή: ψήφισε/υποστήριξε την ομάδα. Καμία άλλη ενέργεια.</td></tr>
-<tr><td class="lbl">Αποτελεσματικότητα δράσης (response efficacy)</td><td class="g">Η δράση λύνει την απειλή? Εξηγείται πώς?</td><td class="ex">Δεν εξηγείται. Η σύνδεση «στήριξη → σωτηρία» δηλώνεται, δεν αποδεικνύεται.</td></tr>
-<tr><td class="lbl">Αίσθηση ικανότητας (self-efficacy)</td><td class="g">Μου δίνεται κάτι να κάνω μόνος μου, ή μου λένε ότι δεν μπορώ?</td><td class="ex">«Μόνος σου δεν μπορείς.» Η μόνη ικανότητα που μου αποδίδεται είναι να ενταχθώ.</td></tr>
-<tr><td class="lbl">Έλεγχος κινδύνου ή έλεγχος φόβου;</td><td class="g">Το μήνυμα με κάνει να λύνω πρόβλημα ή να διαχειρίζομαι το άγχος μου?</td><td class="ex">Έλεγχος φόβου: δεν μαθαίνω τίποτα για το πρόβλημα, μαθαίνω μόνο πού να «κρυφτώ».</td></tr>
-<tr><td class="lbl">Το σερβιρισμένο δίλημμα</td><td class="g">Σταθερότητα vs χάος? Εμείς vs καταστροφή? Ποιος ορίζει τους δύο πόλους?</td><td class="ex">«Σταθερότητα ή χάος». Το «χάος» δεν ορίζεται· απλώς είναι ό,τι δεν είμαστε εμείς.</td></tr>
-<tr><td class="lbl">Ιστορικός έλεγχος</td><td class="g">Πόσες φορές ήταν «οι πιο κρίσιμες εκλογές» τα τελευταία 20 χρόνια?</td><td class="ex">Αναζήτηση στον Τύπο: η φράση εμφανίζεται σε κάθε μία από τις τελευταίες 6 εκλογικές αναμετρήσεις.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Η απειλή</td><td class="g">Τι λέγεται ότι κινδυνεύει? Με ποιες λέξεις?</td><td class="ex">«Η χώρα κινδυνεύει να γυρίσει 20 χρόνια πίσω. Αυτές είναι οι πιο κρίσιμες εκλογές από τη μεταπολίτευση.»</td><td class="ans"><textarea class="ans-in" id="a11-1" data-step="11" data-field="Η απειλή" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Η απειλή — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Σοβαρότητα &amp; εγγύτητα</td><td class="g">Πόσο μεγάλη και πόσο κοντά σε μένα παρουσιάζεται?</td><td class="ex">Μέγιστη σοβαρότητα (εθνική), μέγιστη εγγύτητα («η οικογένειά σου»). Χωρίς συγκεκριμένο μηχανισμό ή αριθμό.</td><td class="ans"><textarea class="ans-in" id="a11-2" data-step="11" data-field="Σοβαρότητα &amp; εγγύτητα" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Σοβαρότητα &amp; εγγύτητα — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Η προτεινόμενη δράση</td><td class="g">Τι ακριβώς μου ζητούν να κάνω?</td><td class="ex">«Στήριξε τη σταθερότητα.» Δηλαδή: ψήφισε/υποστήριξε την ομάδα. Καμία άλλη ενέργεια.</td><td class="ans"><textarea class="ans-in" id="a11-3" data-step="11" data-field="Η προτεινόμενη δράση" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Η προτεινόμενη δράση — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Αποτελεσματικότητα δράσης (response efficacy)</td><td class="g">Η δράση λύνει την απειλή? Εξηγείται πώς?</td><td class="ex">Δεν εξηγείται. Η σύνδεση «στήριξη → σωτηρία» δηλώνεται, δεν αποδεικνύεται.</td><td class="ans"><textarea class="ans-in" id="a11-4" data-step="11" data-field="Αποτελεσματικότητα δράσης (response efficacy)" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Αποτελεσματικότητα δράσης (response efficacy) — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Αίσθηση ικανότητας (self-efficacy)</td><td class="g">Μου δίνεται κάτι να κάνω μόνος μου, ή μου λένε ότι δεν μπορώ?</td><td class="ex">«Μόνος σου δεν μπορείς.» Η μόνη ικανότητα που μου αποδίδεται είναι να ενταχθώ.</td><td class="ans"><textarea class="ans-in" id="a11-5" data-step="11" data-field="Αίσθηση ικανότητας (self-efficacy)" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Αίσθηση ικανότητας (self-efficacy) — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Έλεγχος κινδύνου ή έλεγχος φόβου;</td><td class="g">Το μήνυμα με κάνει να λύνω πρόβλημα ή να διαχειρίζομαι το άγχος μου?</td><td class="ex">Έλεγχος φόβου: δεν μαθαίνω τίποτα για το πρόβλημα, μαθαίνω μόνο πού να «κρυφτώ».</td><td class="ans"><textarea class="ans-in" id="a11-6" data-step="11" data-field="Έλεγχος κινδύνου ή έλεγχος φόβου;" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Έλεγχος κινδύνου ή έλεγχος φόβου; — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Το σερβιρισμένο δίλημμα</td><td class="g">Σταθερότητα vs χάος? Εμείς vs καταστροφή? Ποιος ορίζει τους δύο πόλους?</td><td class="ex">«Σταθερότητα ή χάος». Το «χάος» δεν ορίζεται· απλώς είναι ό,τι δεν είμαστε εμείς.</td><td class="ans"><textarea class="ans-in" id="a11-7" data-step="11" data-field="Το σερβιρισμένο δίλημμα" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Το σερβιρισμένο δίλημμα — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ιστορικός έλεγχος</td><td class="g">Πόσες φορές ήταν «οι πιο κρίσιμες εκλογές» τα τελευταία 20 χρόνια?</td><td class="ex">Αναζήτηση στον Τύπο: η φράση εμφανίζεται σε κάθε μία από τις τελευταίες 6 εκλογικές αναμετρήσεις.</td><td class="ans"><textarea class="ans-in" id="a11-8" data-step="11" data-field="Ιστορικός έλεγχος" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ιστορικός έλεγχος — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -625,6 +696,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Υψηλή για τη δομή (υψηλή απειλή / χαμηλή ικανότητα / μία διέξοδος)· Δεν αφορά αν η απειλή είναι πραγματική.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Ρωτάω δύο πράγματα: «Ποιος ακριβώς είναι ο κίνδυνος, με αριθμούς?» και «Τι μπορώ να κάνω εγώ, εκτός από να σας στηρίξω?» Αν δεν υπάρχει απάντηση στο δεύτερο, το μήνυμα δεν με προστατεύει — με στρατεύει.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-11" data-step="11"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-11" data-step="11" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 </section>
@@ -651,15 +727,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Ποιο συναίσθημα μου ζητήθηκε, τι έκανα με αυτό, και ποιος κέρδισε από την κίνηση του δαχτύλου μου;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Το post</td><td class="g">Τι είδες? Ποιο είναι το μήνυμα?</td><td class="ex">Ανάρτηση πολιτικού λογαριασμού με προκλητική ατάκα για μια κοινωνική ομάδα.</td></tr>
-<tr><td class="lbl">Το συναίσθημα που προκλήθηκε</td><td class="g">Οργή, φόβος, περιφρόνηση, ηθική αγανάκτηση? Μέτρησέ το 1–5.</td><td class="ex">Ηθική αγανάκτηση, 5/5. Ένιωσα ότι «κάποιος πρέπει να απαντήσει».</td></tr>
-<tr><td class="lbl">Ηθικο-συναισθηματικές λέξεις στο post</td><td class="g">Κατέγραψέ τις. Πόσες?</td><td class="ex">«ντροπή», «προδοσία», «ξεφτίλα», «πρέπει να λογοδοτήσουν» — 4 σε 2 προτάσεις.</td></tr>
-<tr><td class="lbl">Τι έκανα</td><td class="g">Like / comment / share / quote / screenshot-and-post?</td><td class="ex">Quote με σχόλιο «απίστευτο» σε 3.200 ακόλουθους. 41 από αυτούς το σχολίασαν.</td></tr>
-<tr><td class="lbl">Τι κέρδισε ο δημιουργός</td><td class="g">Reach, σχόλια, νέες εμφανίσεις? Δες τα metrics πριν/μετά αν φαίνονται.</td><td class="ex">Το post πήγε από 400 σε 12.000 προβολές μέσα σε 3 ώρες. Το 70% των σχολίων ήταν αρνητικά — και μέτρησαν ως engagement.</td></tr>
-<tr><td class="lbl">Τι κέρδισε η πλατφόρμα</td><td class="g">Χρόνος παραμονής, sessions, δεδομένα.</td><td class="ex">Εγώ μόνος μου: 47 λεπτά στο thread. Πολλαπλασίασέ το.</td></tr>
-<tr><td class="lbl">Τι κέρδισα εγώ</td><td class="g">Ειλικρινά.</td><td class="ex">Δύο ώρες εκνευρισμού και το συναίσθημα ότι «κάτι έκανα». Το post είναι ακόμα εκεί, μεγαλύτερο.</td></tr>
-<tr><td class="lbl">Τι θα έκανα διαφορετικά</td><td class="g">Report / mute / block / δεν αναδημοσιεύω / γράφω κάτι δικό μου χωρίς link?</td><td class="ex">Report αν παραβιάζει κανόνες. Καθόλου quote. Αν θέλω να μιλήσω για το θέμα, το κάνω χωρίς να συνδέω το post.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Το post</td><td class="g">Τι είδες? Ποιο είναι το μήνυμα?</td><td class="ex">Ανάρτηση πολιτικού λογαριασμού με προκλητική ατάκα για μια κοινωνική ομάδα.</td><td class="ans"><textarea class="ans-in" id="a12-1" data-step="12" data-field="Το post" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Το post — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Το συναίσθημα που προκλήθηκε</td><td class="g">Οργή, φόβος, περιφρόνηση, ηθική αγανάκτηση? Μέτρησέ το 1–5.</td><td class="ex">Ηθική αγανάκτηση, 5/5. Ένιωσα ότι «κάποιος πρέπει να απαντήσει».</td><td class="ans"><textarea class="ans-in" id="a12-2" data-step="12" data-field="Το συναίσθημα που προκλήθηκε" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Το συναίσθημα που προκλήθηκε — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ηθικο-συναισθηματικές λέξεις στο post</td><td class="g">Κατέγραψέ τις. Πόσες?</td><td class="ex">«ντροπή», «προδοσία», «ξεφτίλα», «πρέπει να λογοδοτήσουν» — 4 σε 2 προτάσεις.</td><td class="ans"><textarea class="ans-in" id="a12-3" data-step="12" data-field="Ηθικο-συναισθηματικές λέξεις στο post" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ηθικο-συναισθηματικές λέξεις στο post — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι έκανα</td><td class="g">Like / comment / share / quote / screenshot-and-post?</td><td class="ex">Quote με σχόλιο «απίστευτο» σε 3.200 ακόλουθους. 41 από αυτούς το σχολίασαν.</td><td class="ans"><textarea class="ans-in" id="a12-4" data-step="12" data-field="Τι έκανα" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι έκανα — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι κέρδισε ο δημιουργός</td><td class="g">Reach, σχόλια, νέες εμφανίσεις? Δες τα metrics πριν/μετά αν φαίνονται.</td><td class="ex">Το post πήγε από 400 σε 12.000 προβολές μέσα σε 3 ώρες. Το 70% των σχολίων ήταν αρνητικά — και μέτρησαν ως engagement.</td><td class="ans"><textarea class="ans-in" id="a12-5" data-step="12" data-field="Τι κέρδισε ο δημιουργός" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι κέρδισε ο δημιουργός — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι κέρδισε η πλατφόρμα</td><td class="g">Χρόνος παραμονής, sessions, δεδομένα.</td><td class="ex">Εγώ μόνος μου: 47 λεπτά στο thread. Πολλαπλασίασέ το.</td><td class="ans"><textarea class="ans-in" id="a12-6" data-step="12" data-field="Τι κέρδισε η πλατφόρμα" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι κέρδισε η πλατφόρμα — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι κέρδισα εγώ</td><td class="g">Ειλικρινά.</td><td class="ex">Δύο ώρες εκνευρισμού και το συναίσθημα ότι «κάτι έκανα». Το post είναι ακόμα εκεί, μεγαλύτερο.</td><td class="ans"><textarea class="ans-in" id="a12-7" data-step="12" data-field="Τι κέρδισα εγώ" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι κέρδισα εγώ — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι θα έκανα διαφορετικά</td><td class="g">Report / mute / block / δεν αναδημοσιεύω / γράφω κάτι δικό μου χωρίς link?</td><td class="ex">Report αν παραβιάζει κανόνες. Καθόλου quote. Αν θέλω να μιλήσω για το θέμα, το κάνω χωρίς να συνδέω το post.</td><td class="ans"><textarea class="ans-in" id="a12-8" data-step="12" data-field="Τι θα έκανα διαφορετικά" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι θα έκανα διαφορετικά — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -674,6 +750,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Υψηλή — η δική μου συνεισφορά στη διανομή είναι μετρήσιμη. Το μοντέλο δεν κρίνει πρόθεση του δημιουργού.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Κανόνας 24 ωρών: δεν αναδημοσιεύω τίποτα που με έκανε να θυμώσω μέσα σε ένα λεπτό. Αν την επόμενη μέρα ακόμα θέλω να μιλήσω, γράφω κάτι δικό μου, χωρίς link και χωρίς όνομα.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-12" data-step="12"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-12" data-step="12" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 <article class="step" id="vima-13">
@@ -695,15 +776,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Ποιος άτυπος κανόνας επιβάλλεται σε αυτόν τον χώρο, ποιος τον επιβάλλει, και τι κοστίζει σε κάποιον να διαφωνήσει επί της ουσίας;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Ο χώρος</td><td class="g">Ποιο thread, σελίδα, ομάδα, εκπομπή?</td><td class="ex">Τα σχόλια κάτω από τις αναρτήσεις μιας σελίδας πολιτικού σχολιασμού, τελευταίες 4 εβδομάδες.</td></tr>
-<tr><td class="lbl">Ο άτυπος κανόνας</td><td class="g">Τι «απαγορεύεται» χωρίς να το λέει κανείς ρητά?</td><td class="ex">«Όποιος ζητά πηγή είναι πληρωμένος.» Δεν είναι γραμμένο πουθενά· είναι η αντίδραση κάθε φορά.</td></tr>
-<tr><td class="lbl">Ποιος τον επιβάλλει</td><td class="g">Λογαριασμοί, διαχειριστές, «τακτικοί»?</td><td class="ex">5–6 σταθεροί λογαριασμοί (βλ. Βήμα 3, mindguards) + σιωπή διαχειριστών.</td></tr>
-<tr><td class="lbl">Αναλογία ουσία / πρόσωπο</td><td class="g">Σε ένα δείγμα 50 απαντήσεων σε κριτικά σχόλια: πόσες αφορούν το επιχείρημα?</td><td class="ex">50 απαντήσεις: 6 επί της ουσίας, 44 επί του προσώπου ή του κινήτρου.</td></tr>
-<tr><td class="lbl">Ποιοι αποθαρρύνονται</td><td class="g">Ποιοι σταμάτησαν να σχολιάζουν? Ποιοι δεν εμφανίστηκαν ποτέ?</td><td class="ex">Οι 4 σχολιαστές που έβαζαν πηγές τον Ιούλιο δεν εμφανίζονται τον Αύγουστο.</td></tr>
-<tr><td class="lbl">Το κόστος της διαφωνίας</td><td class="g">Τι θα μου συμβεί αν γράψω ένα ήρεμο, τεκμηριωμένο αντεπιχείρημα?</td><td class="ex">Με βάση το δείγμα: ~15 απαντήσεις για το πρόσωπό μου μέσα σε μία ώρα, 0–1 για το επιχείρημα.</td></tr>
-<tr><td class="lbl">Μέτρο Habermas</td><td class="g">Πρόσβαση ανοιχτή? Συμμετοχή ίση? Κρίνονται τα επιχειρήματα ή οι ομιλητές?</td><td class="ex">Πρόσβαση: ναι. Ίση συμμετοχή: τυπικά. Κρίση επιχειρημάτων: όχι — κρίνεται ποιος μιλά.</td></tr>
-<tr><td class="lbl">Τι θα αποκαθιστούσε τον χώρο</td><td class="g">Κανόνας συμμετοχής, moderation, σιωπηλή αποχώρηση?</td><td class="ex">Moderation που αφαιρεί επιθέσεις στο κίνητρο («πληρωμένος») όσο αφαιρεί βρισιές. Μέχρι τότε: μιλώ αλλού.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Ο χώρος</td><td class="g">Ποιο thread, σελίδα, ομάδα, εκπομπή?</td><td class="ex">Τα σχόλια κάτω από τις αναρτήσεις μιας σελίδας πολιτικού σχολιασμού, τελευταίες 4 εβδομάδες.</td><td class="ans"><textarea class="ans-in" id="a13-1" data-step="13" data-field="Ο χώρος" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ο χώρος — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ο άτυπος κανόνας</td><td class="g">Τι «απαγορεύεται» χωρίς να το λέει κανείς ρητά?</td><td class="ex">«Όποιος ζητά πηγή είναι πληρωμένος.» Δεν είναι γραμμένο πουθενά· είναι η αντίδραση κάθε φορά.</td><td class="ans"><textarea class="ans-in" id="a13-2" data-step="13" data-field="Ο άτυπος κανόνας" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ο άτυπος κανόνας — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ποιος τον επιβάλλει</td><td class="g">Λογαριασμοί, διαχειριστές, «τακτικοί»?</td><td class="ex">5–6 σταθεροί λογαριασμοί (βλ. Βήμα 3, mindguards) + σιωπή διαχειριστών.</td><td class="ans"><textarea class="ans-in" id="a13-3" data-step="13" data-field="Ποιος τον επιβάλλει" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ποιος τον επιβάλλει — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Αναλογία ουσία / πρόσωπο</td><td class="g">Σε ένα δείγμα 50 απαντήσεων σε κριτικά σχόλια: πόσες αφορούν το επιχείρημα?</td><td class="ex">50 απαντήσεις: 6 επί της ουσίας, 44 επί του προσώπου ή του κινήτρου.</td><td class="ans"><textarea class="ans-in" id="a13-4" data-step="13" data-field="Αναλογία ουσία / πρόσωπο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Αναλογία ουσία / πρόσωπο — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ποιοι αποθαρρύνονται</td><td class="g">Ποιοι σταμάτησαν να σχολιάζουν? Ποιοι δεν εμφανίστηκαν ποτέ?</td><td class="ex">Οι 4 σχολιαστές που έβαζαν πηγές τον Ιούλιο δεν εμφανίζονται τον Αύγουστο.</td><td class="ans"><textarea class="ans-in" id="a13-5" data-step="13" data-field="Ποιοι αποθαρρύνονται" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ποιοι αποθαρρύνονται — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Το κόστος της διαφωνίας</td><td class="g">Τι θα μου συμβεί αν γράψω ένα ήρεμο, τεκμηριωμένο αντεπιχείρημα?</td><td class="ex">Με βάση το δείγμα: ~15 απαντήσεις για το πρόσωπό μου μέσα σε μία ώρα, 0–1 για το επιχείρημα.</td><td class="ans"><textarea class="ans-in" id="a13-6" data-step="13" data-field="Το κόστος της διαφωνίας" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Το κόστος της διαφωνίας — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Μέτρο Habermas</td><td class="g">Πρόσβαση ανοιχτή? Συμμετοχή ίση? Κρίνονται τα επιχειρήματα ή οι ομιλητές?</td><td class="ex">Πρόσβαση: ναι. Ίση συμμετοχή: τυπικά. Κρίση επιχειρημάτων: όχι — κρίνεται ποιος μιλά.</td><td class="ans"><textarea class="ans-in" id="a13-7" data-step="13" data-field="Μέτρο Habermas" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Μέτρο Habermas — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι θα αποκαθιστούσε τον χώρο</td><td class="g">Κανόνας συμμετοχής, moderation, σιωπηλή αποχώρηση?</td><td class="ex">Moderation που αφαιρεί επιθέσεις στο κίνητρο («πληρωμένος») όσο αφαιρεί βρισιές. Μέχρι τότε: μιλώ αλλού.</td><td class="ans"><textarea class="ans-in" id="a13-8" data-step="13" data-field="Τι θα αποκαθιστούσε τον χώρο" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι θα αποκαθιστούσε τον χώρο — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -718,6 +799,11 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div class="example">
 <div><b>Βεβαιότητα (παράδειγμα)</b>Υψηλή για το κλίμα (μετρήσιμο)· Μέτρια για το αν είναι οργανωμένο ή αυθόρμητο.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>Δεν πληρώνω τα διόδια. Δεν διαφωνώ εκεί. Γράφω το τεκμηριωμένο αντεπιχείρημα στον δικό μου χώρο, χωρίς link στο thread, και αφήνω να το βρει όποιος ψάχνει.</div>
+</div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-13" data-step="13"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-13" data-step="13" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
 </div>
 </div></article>
 </section>
@@ -744,15 +830,15 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <h4>Κεντρικό ερώτημα</h4>
 <p class="q">Ποια από τα 13 μοτίβα παρατήρησα, με ποιο τεκμήριο και ποια βεβαιότητα το καθένα — και τι είμαι διατεθειμένος να πω δημόσια χωρίς να γίνω ο ίδιος Βήμα 1;</p>
 <h4>Μηχανισμός συμπλήρωσης</h4>
-<table><thead><tr><th style="width:24%">Πεδίο</th><th>Οδηγία</th><th style="width:36%">Παράδειγμα συμπλήρωσης</th></tr></thead><tbody>
-<tr><td class="lbl">Πίνακας μοτίβων (Βήματα 1–13)</td><td class="g">Για κάθε Βήμα: Παρατηρήθηκε? (Ναι/Όχι/Μερικώς) · Τεκμήριο · Βεβαιότητα.</td><td class="ex">Β1 Ναι/Μέτρια · Β2 Ναι/Μέτρια · Β3 Ναι/Υψηλή · Β4 Μερικώς/Μέτρια · Β5 Ναι/Μέτρια · Β6 Ναι/Υψηλή · Β7 Ναι/Υψηλή · Β8 Ναι/Υψηλή · Β9 Ναι/Υψηλή · Β10 Ναι/Υψηλή · Β11 Ναι/Υψηλή · Β12 Ναι/Υψηλή · Β13 Ναι/Υψηλή</td></tr>
-<tr><td class="lbl">Ισχυρές συνδέσεις</td><td class="g">Ποια μοτίβα τεκμηριώνονται με πολλαπλές ανεξάρτητες πηγές?</td><td class="ex">Β3, Β6, Β9, Β10, Β13: μετρήσιμα, με screenshots και δημόσια δεδομένα.</td></tr>
-<tr><td class="lbl">Υποθέσεις</td><td class="g">Ποια μοτίβα βασίζονται σε ένδειξη, χωρίς ανεξάρτητη επιβεβαίωση?</td><td class="ex">Β4 (συντονισμός λογαριασμών) και Β5 (οικονομική σχέση μεσαζόντων): ενδείξεις, όχι αποδείξεις.</td></tr>
-<tr><td class="lbl">Τι ΔΕΝ γνωρίζω</td><td class="g">Γράψε ρητά τα κενά.</td><td class="ex">Ποιος χρηματοδοτεί. Αν υπάρχει κεντρικός συντονισμός. Αν οι λογαριασμοί είναι πληρωμένοι ή εθελοντές.</td></tr>
-<tr><td class="lbl">Επιπτώσεις &amp; επηρεαζόμενοι</td><td class="g">Ποιος πληρώνει το κόστος αυτών των μοτίβων?</td><td class="ex">Οι σχολιαστές που σιώπησαν (Β3, Β13), το κοινό που δεν έμαθε τι απέγινε το Θέμα Α (Β10), οι ομάδες-«ένοχοι» (Β7).</td></tr>
-<tr><td class="lbl">Αναλογική αντίδραση</td><td class="g">Τι θα κάνω — και σε ποιον θα το δώσω?</td><td class="ex">Οργανώνω το αρχείο (screenshots, ημερομηνίες, πίνακες) και το δίνω σε δημοσιογράφο/ερευνητή/fact-checker. Δημόσια μιλώ μόνο για τα «Υψηλής» βεβαιότητας, με πηγές.</td></tr>
-<tr><td class="lbl">Τι ΔΕΝ θα κάνω</td><td class="g">Οι κόκκινες γραμμές.</td><td class="ex">Δεν κατονομάζω πρόσωπα ως «τρολ». Δεν οργανώνω αντί-πλήθος. Δεν αναδημοσιεύω για να καταγγείλω. Δεν γράφω «είναι μηχανισμός» — γράφω «παρατηρούνται Χ, Ψ, Ζ, με αυτές τις πηγές».</td></tr>
-<tr><td class="lbl">Ο δικός μου έλεγχος Βήματος 1</td><td class="g">Ξαναδιάβασε το συμπέρασμά σου. Έχει λέξη-τείχος?</td><td class="ex">Είχα γράψει «ο μηχανισμός». Το άλλαξα σε «τα 9 μοτίβα που κατέγραψα». Λιγότερο εντυπωσιακό, περισσότερο υπερασπίσιμο.</td></tr>
+<table><thead><tr><th>Πεδίο</th><th>Οδηγία</th><th>Παράδειγμα συμπλήρωσης</th><th>Η απάντησή σου</th></tr></thead><tbody>
+<tr><td class="lbl">Πίνακας μοτίβων (Βήματα 1–13)</td><td class="g">Για κάθε Βήμα: Παρατηρήθηκε? (Ναι/Όχι/Μερικώς) · Τεκμήριο · Βεβαιότητα.</td><td class="ex">Β1 Ναι/Μέτρια · Β2 Ναι/Μέτρια · Β3 Ναι/Υψηλή · Β4 Μερικώς/Μέτρια · Β5 Ναι/Μέτρια · Β6 Ναι/Υψηλή · Β7 Ναι/Υψηλή · Β8 Ναι/Υψηλή · Β9 Ναι/Υψηλή · Β10 Ναι/Υψηλή · Β11 Ναι/Υψηλή · Β12 Ναι/Υψηλή · Β13 Ναι/Υψηλή</td><td class="ans"><textarea class="ans-in" id="a14-1" data-step="14" data-field="Πίνακας μοτίβων (Βήματα 1–13)" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Πίνακας μοτίβων (Βήματα 1–13) — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ισχυρές συνδέσεις</td><td class="g">Ποια μοτίβα τεκμηριώνονται με πολλαπλές ανεξάρτητες πηγές?</td><td class="ex">Β3, Β6, Β9, Β10, Β13: μετρήσιμα, με screenshots και δημόσια δεδομένα.</td><td class="ans"><textarea class="ans-in" id="a14-2" data-step="14" data-field="Ισχυρές συνδέσεις" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ισχυρές συνδέσεις — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Υποθέσεις</td><td class="g">Ποια μοτίβα βασίζονται σε ένδειξη, χωρίς ανεξάρτητη επιβεβαίωση?</td><td class="ex">Β4 (συντονισμός λογαριασμών) και Β5 (οικονομική σχέση μεσαζόντων): ενδείξεις, όχι αποδείξεις.</td><td class="ans"><textarea class="ans-in" id="a14-3" data-step="14" data-field="Υποθέσεις" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Υποθέσεις — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι ΔΕΝ γνωρίζω</td><td class="g">Γράψε ρητά τα κενά.</td><td class="ex">Ποιος χρηματοδοτεί. Αν υπάρχει κεντρικός συντονισμός. Αν οι λογαριασμοί είναι πληρωμένοι ή εθελοντές.</td><td class="ans"><textarea class="ans-in" id="a14-4" data-step="14" data-field="Τι ΔΕΝ γνωρίζω" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι ΔΕΝ γνωρίζω — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Επιπτώσεις &amp; επηρεαζόμενοι</td><td class="g">Ποιος πληρώνει το κόστος αυτών των μοτίβων?</td><td class="ex">Οι σχολιαστές που σιώπησαν (Β3, Β13), το κοινό που δεν έμαθε τι απέγινε το Θέμα Α (Β10), οι ομάδες-«ένοχοι» (Β7).</td><td class="ans"><textarea class="ans-in" id="a14-5" data-step="14" data-field="Επιπτώσεις &amp; επηρεαζόμενοι" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Επιπτώσεις &amp; επηρεαζόμενοι — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Αναλογική αντίδραση</td><td class="g">Τι θα κάνω — και σε ποιον θα το δώσω?</td><td class="ex">Οργανώνω το αρχείο (screenshots, ημερομηνίες, πίνακες) και το δίνω σε δημοσιογράφο/ερευνητή/fact-checker. Δημόσια μιλώ μόνο για τα «Υψηλής» βεβαιότητας, με πηγές.</td><td class="ans"><textarea class="ans-in" id="a14-6" data-step="14" data-field="Αναλογική αντίδραση" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Αναλογική αντίδραση — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Τι ΔΕΝ θα κάνω</td><td class="g">Οι κόκκινες γραμμές.</td><td class="ex">Δεν κατονομάζω πρόσωπα ως «τρολ». Δεν οργανώνω αντί-πλήθος. Δεν αναδημοσιεύω για να καταγγείλω. Δεν γράφω «είναι μηχανισμός» — γράφω «παρατηρούνται Χ, Ψ, Ζ, με αυτές τις πηγές».</td><td class="ans"><textarea class="ans-in" id="a14-7" data-step="14" data-field="Τι ΔΕΝ θα κάνω" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Τι ΔΕΝ θα κάνω — η απάντησή σου"></textarea></td></tr>
+<tr><td class="lbl">Ο δικός μου έλεγχος Βήματος 1</td><td class="g">Ξαναδιάβασε το συμπέρασμά σου. Έχει λέξη-τείχος?</td><td class="ex">Είχα γράψει «ο μηχανισμός». Το άλλαξα σε «τα 9 μοτίβα που κατέγραψα». Λιγότερο εντυπωσιακό, περισσότερο υπερασπίσιμο.</td><td class="ans"><textarea class="ans-in" id="a14-8" data-step="14" data-field="Ο δικός μου έλεγχος Βήματος 1" placeholder="Γράψε εδώ τη δική σου παρατήρηση…" aria-label="Ο δικός μου έλεγχος Βήματος 1 — η απάντησή σου"></textarea></td></tr>
 </tbody></table>
 <h4>Checklist</h4>
 <ul class="check">
@@ -768,10 +854,19 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 <div><b>Βεβαιότητα (παράδειγμα)</b>Ανά μοτίβο — ποτέ συνολική. Ο πίνακας ΕΙΝΑΙ το συμπέρασμα.</div>
 <div><b>Αναλογική αντίδραση (παράδειγμα)</b>«Η αντίδρασή σου είναι το προϊόν. Εκτός αν σταματήσεις να αντιδράς και αρχίσεις να ρωτάς.»</div>
 </div>
+<h4>Το δικό σου κλείσιμο</h4>
+<div class="own">
+<div><b>Η βεβαιότητά σου</b><select class="cert-in" id="cert-14" data-step="14"><option value="Δεν αξιολογήθηκε">Δεν αξιολογήθηκε</option><option value="Χαμηλή">Χαμηλή</option><option value="Μέτρια">Μέτρια</option><option value="Υψηλή">Υψηλή</option></select></div>
+<div><b>Η αναλογική αντίδρασή σου</b><textarea class="resp-in" id="resp-14" data-step="14" placeholder="Ερώτηση, πηγή, αναφορά, σιωπή — τι θα κάνεις αναλογικά;"></textarea></div>
+</div>
 </div></article>
 </section>
 <div class="total"><div class="progress"><span>Συνολική ολοκλήρωση workbook</span><span class="bar" id="total-bar"><i></i></span><span id="total-pct">0/70 · 0%</span></div>
-<p style="margin:14px 0 0;font-size:15px;color:#333">Το ποσοστό μετρά την άσκηση, όχι την «ενοχή» κάποιου. Τα κουτάκια κρατιούνται μόνο όσο η σελίδα είναι ανοιχτή· το πλήρες spreadsheet αποθηκεύει τα πάντα.</p></div>
+<p style="margin:14px 0 0;font-size:15px;color:#333">Το ποσοστό μετρά την άσκηση, όχι την «ενοχή» κάποιου. Κουτάκια και απαντήσεις αποθηκεύονται τοπικά στον browser σου· για μόνιμο αρχείο χρησιμοποίησε την εξαγωγή παρακάτω.</p></div>
+<section class="export" id="export"><h3>Εξαγωγή απαντήσεων</h3>
+<p>Οι απαντήσεις σου αποθηκεύονται αυτόματα σε αυτή τη συσκευή (τοπικά, στον browser) και δεν αποστέλλονται πουθενά. Κατέβασέ τις δομημένες ανά Φάση και Βήμα: πεδία, checklist, βεβαιότητα, αναλογική αντίδραση.</p>
+<div class="btns"><button class="btn" id="exp-md" type="button">Εξαγωγή Markdown (.md)</button><button class="btn alt" id="exp-txt" type="button">Εξαγωγή κειμένου (.txt)</button><button class="btn alt" id="exp-csv" type="button">Εξαγωγή CSV (.csv)</button><button class="btn alt" id="exp-json" type="button">Εξαγωγή JSON</button><button class="btn warn" id="exp-clear" type="button">Καθαρισμός απαντήσεων</button></div>
+<p class="saved" id="saved-note">Αυτόματη αποθήκευση: ενεργή.</p></section>
 <section class="cta"><h2>Παραλαβή workbook</h2>
 <p>Κάνε comment «ΑΝΑΓΝΩΡΙΣΗ» και θα λάβεις το πλήρες workbook (spreadsheet με completion rate) για να μάθεις να εντοπίζεις τα μοτίβα πολιτικής χειραγώγησης.</p>
 <p class="tag">Η αντίδρασή σου είναι το προϊόν.</p></section>
@@ -798,9 +893,17 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
 </ol></section>
 </main>
 <footer>ΤΟ ΕΓΧΕΙΡΙΔΙΟ✱ · Workbook Αναγνώρισης · Οποιαδήποτε ομοιότητα με πραγματικές ομάδες είναι στατιστικά αναπόφευκτη.</footer>
+<script id="steps-data" type="application/json">[{"num": 1, "title": "ΤΟ ΟΝΟΜΑ", "phase": "Α", "phaseName": "ΙΔΡΥΣΗ", "model": "Framing (Entman, 1993) + Cognitive Dissonance (Festinger, 1957)", "question": "Ποια λέξη ή πλαίσιο ορίζει εκ των προτέρων ποιος φαίνεται «σωστός» — και τι πρέπει να παραβλέψω για να το δεχτώ;", "fields": ["Ο όρος / το όνομα / το σύνθημα", "Λειτουργία 1 — Ποιο πρόβλημα ορίζει;", "Λειτουργία 2 — Ποιον υποδεικνύει ως αίτιο;", "Λειτουργία 3 — Ποια ηθική κρίση εμπεριέχει;", "Λειτουργία 4 — Ποια λύση υπονοεί;", "Τι αφήνει εκτός το πλαίσιο;", "Ουδέτερη αναδιατύπωση", "Κόστος αμφισβήτησης (dissonance)", "Πηγή ελέγχου"], "checklist": ["Κατέγραψα τη λέξη ακριβώς όπως εμφανίζεται", "Συμπλήρωσα και τις 4 λειτουργίες του πλαισίου (πρόβλημα, αίτιο, ηθική, λύση)", "Έγραψα τι αφήνει εκτός", "Έκανα ουδέτερη αναδιατύπωση", "Έλεγξα τουλάχιστον μία πηγή για το ποιοι είναι πίσω από το όνομα"]}, {"num": 2, "title": "ΟΙ ΑΡΙΘΜΟΙ", "phase": "Β", "phaseName": "ΣΤΕΛΕΧΩΣΗ", "model": "Social Comparison Theory (Festinger, 1954) + Conformity (Cialdini & Goldstein, 2004)", "question": "Η πλειοψηφία που βλέπω είναι μετρημένη ή αισθητή — και ποιο από τα τρία κίνητρα συμμόρφωσης ενεργοποιεί μέσα μου;", "fields": ["Ο ισχυρισμός που «όλοι» υποστηρίζουν", "Μέτρηση: σχόλια / λογαριασμοί / χρόνος", "Ποικιλία διατύπωσης", "Ποιο κίνητρο συμμόρφωσης ενεργοποιείται σε μένα;", "Ανεξάρτητο μέτρο", "Εναλλακτική εξήγηση", "Πηγή / τεκμήριο"], "checklist": ["Μέτρησα (σχόλια, λογαριασμοί, χρόνος) αντί να εκτιμήσω", "Κατέγραψα 3 παραλλαγές του ίδιου μηνύματος", "Ονόμασα ποιο κίνητρο συμμόρφωσης ένιωσα", "Βρήκα τουλάχιστον ένα ανεξάρτητο μέτρο", "Έγραψα μία εναλλακτική εξήγηση πριν βγάλω συμπέρασμα"]}, {"num": 3, "title": "Η ΣΙΩΠΗ", "phase": "Β", "phaseName": "ΣΤΕΛΕΧΩΣΗ", "model": "Spiral of Silence (Noelle-Neumann, 1974) + Groupthink (Janis, 1972)", "question": "Ποιος σταμάτησε να μιλάει, τι το προκάλεσε, και πόσες από τις «απαντήσεις» αφορούσαν το επιχείρημα;", "fields": ["Το κριτικό σχόλιο", "Απαντήσεις: επί της ουσίας vs. επί του προσώπου", "Τύπος πίεσης", "Τι έγινε μετά", "Mindguards", "Ποιος λείπει από τη συζήτηση;", "Η δική μου αυτολογοκρισία", "Πηγή / τεκμήριο"], "checklist": ["Μέτρησα ουσία vs. πρόσωπο στις απαντήσεις", "Κατέγραψα τις συγκεκριμένες φράσεις πίεσης", "Έλεγξα τι έγινε με τον σχολιαστή μετά", "Εντόπισα (ή απέκλεισα) mindguards", "Σημείωσα τη δική μου αντίδραση αυτολογοκρισίας"]}, {"num": 4, "title": "ΤΟ HR", "phase": "Β", "phaseName": "ΣΤΕΛΕΧΩΣΗ", "model": "Astroturfing + Persona Management Software (Monbiot, The Guardian, 2011)", "question": "Ποια σημάδια, μετρημένα σε πολλά προφίλ μαζί, δείχνουν συντονισμό — και ποια εναλλακτική εξήγηση πρέπει να αποκλείσω πρώτα;", "fields": ["Το δείγμα λογαριασμών", "Ηλικία & ιστορικό προφίλ", "Ώρες δραστηριότητας", "Ύφος & λεξιλόγιο", "Άλλα θέματα που σχολιάζουν", "Φωτογραφίες προφίλ", "Εναλλακτική εξήγηση", "Πηγή / τεκμήριο"], "checklist": ["Παρατήρησα ≥10 λογαριασμούς, όχι έναν", "Κατέγραψα ηλικία και ιστορικό προφίλ", "Κατέγραψα το ωράριο δραστηριότητας", "Έκανα αντίστροφη αναζήτηση σε ≥3 φωτογραφίες", "Έγραψα εναλλακτική εξήγηση και τι θα την απέκλειε"]}, {"num": 5, "title": "ΤΟ HOODIE", "phase": "Γ", "phaseName": "ΔΙΚΤΥΟ ΔΙΑΝΟΜΗΣ", "model": "Two-Step Flow Model (Lazarsfeld, Berelson & Gaudet, 1948)", "question": "Ποιος μεσολαβεί ανάμεσα στην αρχική πηγή και σε μένα, τι πρόσθεσε στη μεταφορά, και έχει δηλώσει τη σχέση του;", "fields": ["Αρχική πηγή (Βήμα 1 του flow)", "Μεσάζων (Βήμα 2 του flow)", "Χρόνος πηγής → μεσάζοντα", "Τι πρόσθεσε / τι αφαίρεσε ο μεσάζων", "Δηλωμένη σχέση / χορηγία", "Πόσοι μεσάζοντες, ίδια γραμμή", "Τι θα ζητούσα να αποκαλυφθεί", "Πηγή / τεκμήριο"], "checklist": ["Εντόπισα την αρχική πηγή με ώρα", "Κατέγραψα τον μεσάζοντα και τι άλλαξε στη μεταφορά", "Μέτρησα το χρονικό διάστημα σε ≥3 περιπτώσεις", "Έλεγξα disclosure / Page Transparency", "Έγραψα ποια πληροφορία λείπει για να κρίνω"]}, {"num": 6, "title": "ΤΟ ΠΛΥΝΤΗΡΙΟ", "phase": "Γ", "phaseName": "ΔΙΚΤΥΟ ΔΙΑΝΟΜΗΣ", "model": "Elaboration Likelihood Model (Petty & Cacioppo, 1986)", "question": "Το μήνυμα με προσκαλεί να σκεφτώ ή μου δίνει σήματα για να μη χρειαστεί — και σε ποια κατάσταση με βρίσκει;", "fields": ["Το μήνυμα", "Επιχειρήματα (κεντρική οδός)", "Cues (περιφερειακή οδός)", "Η δική μου κατάσταση", "Ποια οδός ενεργοποιήθηκε;", "Ρυθμός θεμάτων", "Τι θα χρειαζόμουν για κεντρική επεξεργασία", "Πηγή / claim check"], "checklist": ["Μέτρησα επιχειρήματα με δεδομένα (κεντρική οδός)", "Κατέγραψα όλα τα cues (περιφερειακή οδός)", "Σημείωσα την κατάστασή μου (ώρα, κόπωση, όγκος)", "Κατέγραψα τον ρυθμό «θεμάτων» της εβδομάδας", "Έγραψα τι θα χρειαζόμουν για να σκεφτώ κεντρικά"]}, {"num": 7, "title": "ΤΟ ΤΗΛΕΦΩΝΙΚΟ ΚΕΝΤΡΟ", "phase": "Δ", "phaseName": "ΠΕΡΙΕΧΟΜΕΝΟ", "model": "Groupthink (Janis, 1972) + Scapegoating", "question": "Ποιο πρόβλημα, ποιος «ένοχος», και υπάρχει αιτιώδης μηχανισμός ή μόνο ένταση;", "fields": ["Το πρόβλημα", "Ο «ένοχος» που προτείνεται", "Ο αιτιώδης μηχανισμός", "Τα δεδομένα", "Παράγοντες που αποσιωπούνται", "Στερεότυπο / διχοτομία", "Ποιος ωφελείται από τη μετατόπιση", "Ρυθμός αλλαγής ενόχου"], "checklist": ["Ονόμασα το πραγματικό πρόβλημα", "Ζήτησα (και κατέγραψα αν λείπει) τον αιτιώδη μηχανισμό", "Βρήκα δεδομένα για τη σχέση ενόχου–προβλήματος", "Έγραψα ≥3 παράγοντες που αποσιωπούνται", "Κατέγραψα τη σειρά «ενόχων» των τελευταίων εβδομάδων"]}, {"num": 8, "title": "ΤΟ ΕΜΒΟΛΙΟ", "phase": "Δ", "phaseName": "ΠΕΡΙΕΧΟΜΕΝΟ", "model": "Inoculation Theory (McGuire, 1964) — αντεστραμμένη χρήση", "question": "Ποιος ανέφερε πρώτος την κατηγορία, την παρουσίασε στην ισχυρή ή στην καρικατουρίστικη μορφή της, και την αντέκρουσε με στοιχεία ή με γέλιο;", "fields": ["Η κατηγορία / κριτική που «προλαμβάνεται»", "Ποιος την ανέφερε πρώτος;", "Ισχυρή ή καρικατουρίστικη μορφή;", "Αντίκρουση: στοιχεία ή γέλιο;", "Τι έγινε όταν ήρθε η σοβαρή εκδοχή;", "Τι θα δοκίμαζε την πραγματική εκδοχή;", "Υγιές prebunking (για σύγκριση)", "Πηγή / τεκμήριο"], "checklist": ["Εντόπισα ποιος ανέφερε πρώτος την κατηγορία (και πότε)", "Σύγκρινα καρικατούρα vs σοβαρή διατύπωση", "Έλεγξα αν η αντίκρουση είχε στοιχεία", "Κατέγραψα την αντίδραση στη σοβαρή εκδοχή", "Έγραψα τι θα δοκίμαζε πραγματικά την κατηγορία"]}, {"num": 9, "title": "Η ΕΠΑΝΑΛΗΨΗ", "phase": "Δ", "phaseName": "ΠΕΡΙΕΧΟΜΕΝΟ", "model": "Illusory Truth Effect (Hasher, Goldstein & Toppino, 1977) + case study: Internet Research Agency", "question": "Πόσες φορές το έχω δει, από πόσες πραγματικά ανεξάρτητες πηγές, και πού πρωτοεμφανίστηκε;", "fields": ["Ο ισχυρισμός", "Πόσες φορές / πού το είδα", "Ίχνος πηγών (source trail)", "Πραγματικά ανεξάρτητες πηγές", "Πρώτη εμφάνιση", "Πρωτογενές τεκμήριο", "Έλεγχος confirmation bias", "Τι επιβεβαιώνει / τι διαψεύδει"], "checklist": ["Μέτρησα τις εκθέσεις στον ισχυρισμό", "Ακολούθησα το ίχνος κάθε αναφοράς προς την αρχή", "Μέτρησα τις ΠΡΑΓΜΑΤΙΚΑ ανεξάρτητες πηγές", "Έψαξα το πρωτογενές τεκμήριο", "Έκανα τον έλεγχο confirmation bias στον εαυτό μου"]}, {"num": 10, "title": "Η ΕΤΟΙΜΗ ΣΑΛΑΤΑ", "phase": "Δ", "phaseName": "ΠΕΡΙΕΧΟΜΕΝΟ", "model": "Agenda-Setting Theory (McCombs & Shaw, 1972)", "question": "Ποιο θέμα βγήκε από την ατζέντα, ποιο μπήκε στη θέση του, πότε ακριβώς, και πού βρίσκεται σήμερα το πρώτο;", "fields": ["Θέμα Α — το ουσιαστικό", "Θέμα Β — το αντικαταστάτο", "Χρονογραμμή Α vs Β", "Χαρακτηριστικά του Β", "Ποιος έσπρωξε πρώτος το Β", "Πού είναι σήμερα το Α", "Ποιος ωφελείται από τη μετατόπιση", "Άσκηση μνήμης"], "checklist": ["Κατέγραψα Θέμα Α με τεκμήρια και ημερομηνία", "Κατέγραψα Θέμα Β και την ώρα εμφάνισής του", "Έφτιαξα χρονογραμμή Α vs Β", "Έλεγξα ποιοι ανέδειξαν πρώτοι το Β", "Έγραψα πού βρίσκεται σήμερα το Α"]}, {"num": 11, "title": "ΤΟ ΚΑΤΑΦΥΓΙΟ", "phase": "Δ", "phaseName": "ΠΕΡΙΕΧΟΜΕΝΟ", "model": "Extended Parallel Process Model (Witte, 1992)", "question": "Πόσο ψηλά ανεβαίνει η απειλή, πόσο χαμηλά κατεβαίνει η δική μου ικανότητα, και η μόνη «λύση» που προτείνεται είναι η υπακοή;", "fields": ["Η απειλή", "Σοβαρότητα & εγγύτητα", "Η προτεινόμενη δράση", "Αποτελεσματικότητα δράσης (response efficacy)", "Αίσθηση ικανότητας (self-efficacy)", "Έλεγχος κινδύνου ή έλεγχος φόβου;", "Το σερβιρισμένο δίλημμα", "Ιστορικός έλεγχος"], "checklist": ["Κατέγραψα την απειλή με τα ακριβή λόγια", "Έλεγξα αν η προτεινόμενη δράση εξηγείται ότι λύνει την απειλή", "Σημείωσα τι ικανότητα μου αποδίδεται (ή αφαιρείται)", "Ταξινόμησα: έλεγχος κινδύνου ή έλεγχος φόβου", "Έκανα τον ιστορικό έλεγχο της φράσης"]}, {"num": 12, "title": "ΤΑ ΕΝΣΗΜΑ", "phase": "Ε", "phaseName": "ΟΙΚΟΝΟΜΙΚΑ", "model": "Attention Economy (Simon, 1971) + Platform Incentives (Brady et al., 2017) — ιστορική αναφορά: Hypodermic Needle", "question": "Ποιο συναίσθημα μου ζητήθηκε, τι έκανα με αυτό, και ποιος κέρδισε από την κίνηση του δαχτύλου μου;", "fields": ["Το post", "Το συναίσθημα που προκλήθηκε", "Ηθικο-συναισθηματικές λέξεις στο post", "Τι έκανα", "Τι κέρδισε ο δημιουργός", "Τι κέρδισε η πλατφόρμα", "Τι κέρδισα εγώ", "Τι θα έκανα διαφορετικά"], "checklist": ["Ονόμασα και βαθμολόγησα το συναίσθημα", "Μέτρησα τις ηθικο-συναισθηματικές λέξεις", "Κατέγραψα τι έκανα και σε πόσους το έστειλα", "Έλεγξα τι κέρδισε ο δημιουργός (metrics)", "Έγραψα τι θα έκανα διαφορετικά"]}, {"num": 13, "title": "ΤΑ ΔΙΟΔΙΑ", "phase": "Ε", "phaseName": "ΟΙΚΟΝΟΜΙΚΑ", "model": "Normative Influence (Deutsch & Gerard, 1955; Cialdini & Goldstein, 2004) + Public Sphere (Habermas, 1962/1989)", "question": "Ποιος άτυπος κανόνας επιβάλλεται σε αυτόν τον χώρο, ποιος τον επιβάλλει, και τι κοστίζει σε κάποιον να διαφωνήσει επί της ουσίας;", "fields": ["Ο χώρος", "Ο άτυπος κανόνας", "Ποιος τον επιβάλλει", "Αναλογία ουσία / πρόσωπο", "Ποιοι αποθαρρύνονται", "Το κόστος της διαφωνίας", "Μέτρο Habermas", "Τι θα αποκαθιστούσε τον χώρο"], "checklist": ["Διατύπωσα τον άτυπο κανόνα με μία πρόταση", "Εντόπισα ποιος τον επιβάλλει", "Μέτρησα ουσία/πρόσωπο σε δείγμα ≥30 απαντήσεων", "Κατέγραψα ποιοι εξαφανίστηκαν από τη συζήτηση", "Εφάρμοσα τα 3 κριτήρια Habermas"]}, {"num": 14, "title": "ΤΟ DISCLAIMER", "phase": "ΣΤ", "phaseName": "ΠΑΡΑΛΑΒΗ ΕΡΓΟΥ", "model": "Σύνθεση & Ηθικός Έλεγχος — Recap + Meta-reflection", "question": "Ποια από τα 13 μοτίβα παρατήρησα, με ποιο τεκμήριο και ποια βεβαιότητα το καθένα — και τι είμαι διατεθειμένος να πω δημόσια χωρίς να γίνω ο ίδιος Βήμα 1;", "fields": ["Πίνακας μοτίβων (Βήματα 1–13)", "Ισχυρές συνδέσεις", "Υποθέσεις", "Τι ΔΕΝ γνωρίζω", "Επιπτώσεις & επηρεαζόμενοι", "Αναλογική αντίδραση", "Τι ΔΕΝ θα κάνω", "Ο δικός μου έλεγχος Βήματος 1"], "checklist": ["Συμπλήρωσα τον πίνακα και των 13 μοτίβων", "Χώρισα ισχυρές συνδέσεις από υποθέσεις", "Έγραψα ρητά τι δεν γνωρίζω", "Όρισα αναλογική αντίδραση και παραλήπτη", "Έλεγξα το συμπέρασμά μου για δικό μου framing"]}]</script>
 <script>
 (function(){
-  var TOTAL=0,DONE=0;
+  var KEY='egx-workbook-v1';
+  var STEPS=[];try{STEPS=JSON.parse(document.getElementById('steps-data').textContent);}catch(e){}
+  var store={};try{store=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){store={};}
+  var note=document.getElementById('saved-note');
+  function save(){
+    try{localStorage.setItem(KEY,JSON.stringify(store));if(note){note.textContent='Αποθηκεύτηκε τοπικά · '+new Date().toLocaleTimeString('el-GR');}}
+    catch(e){if(note){note.textContent='Η τοπική αποθήκευση δεν είναι διαθέσιμη σε αυτόν τον browser — χρησιμοποίησε την εξαγωγή.';}}
+  }
   function upd(step){
     var boxes=step.querySelectorAll('input[type=checkbox]');
     var d=0;boxes.forEach(function(b){if(b.checked)d++;});
@@ -815,12 +918,100 @@ footer{padding:40px 0 60px;font-family:"Courier New",Courier,monospace;font-size
     var t=document.getElementById('total-pct');
     if(t){t.textContent=d+'/'+all.length+' · '+pct+'%';document.querySelector('#total-bar i').style.width=pct+'%';}
   }
+  /* restore */
+  document.querySelectorAll('.ans-in,.resp-in,.cert-in').forEach(function(el){
+    if(store[el.id]!==undefined){el.value=store[el.id];}
+    el.addEventListener('input',function(){store[el.id]=el.value;save();});
+    el.addEventListener('change',function(){store[el.id]=el.value;save();});
+  });
   document.querySelectorAll('.step').forEach(function(step){
     step.querySelectorAll('input[type=checkbox]').forEach(function(b){
-      b.addEventListener('change',function(){upd(step);total();});
+      if(store[b.id]===true){b.checked=true;}
+      b.addEventListener('change',function(){store[b.id]=b.checked;save();upd(step);total();});
     });
     upd(step);
   });
   total();
+  /* export helpers */
+  function val(id){var el=document.getElementById(id);return el?(el.value||''):'';}
+  function chk(id){var el=document.getElementById(id);return !!(el&&el.checked);}
+  function collect(){
+    var out={title:'ΤΟ ΕΓΧΕΙΡΙΔΙΟ — Workbook Αναγνώρισης',exported:new Date().toISOString(),phases:[]};
+    var byPhase={};
+    STEPS.forEach(function(s){
+      var key=s.phase;
+      if(!byPhase[key]){byPhase[key]={letter:s.phase,name:s.phaseName,steps:[]};out.phases.push(byPhase[key]);}
+      var st={num:s.num,title:s.title,model:s.model,question:s.question,fields:[],checklist:[],certainty:val('cert-'+s.num),response:val('resp-'+s.num)};
+      s.fields.forEach(function(f,i){st.fields.push({field:f,answer:val('a'+s.num+'-'+(i+1))});});
+      s.checklist.forEach(function(c,i){st.checklist.push({item:c,done:chk('c'+s.num+'-'+(i+1))});});
+      var done=st.checklist.filter(function(c){return c.done;}).length;
+      st.completion=done+'/'+st.checklist.length;
+      byPhase[key].steps.push(st);
+    });
+    var all=document.querySelectorAll('.step input[type=checkbox]');var d=0;all.forEach(function(b){if(b.checked)d++;});
+    out.completion=d+'/'+all.length;
+    return out;
+  }
+  function pad(n){return (n<10?'0':'')+n;}
+  function toMD(data){
+    var L=['# '+data.title,'','Εξαγωγή: '+new Date(data.exported).toLocaleString('el-GR')+'  ','Συνολική ολοκλήρωση: '+data.completion,''];
+    data.phases.forEach(function(p){
+      L.push('## Φάση '+p.letter+'. '+p.name,'');
+      p.steps.forEach(function(s){
+        L.push('### Βήμα '+pad(s.num)+' — '+s.title,'','**Μοντέλο:** '+s.model+'  ','**Κεντρικό ερώτημα:** '+s.question,'','| Πεδίο | Η απάντησή μου |','|---|---|');
+        s.fields.forEach(function(f){L.push('| '+f.field.replace(/\|/g,'/')+' | '+(f.answer||'—').replace(/\|/g,'/').replace(/\n/g,'<br>')+' |');});
+        L.push('','**Checklist ('+s.completion+')**','');
+        s.checklist.forEach(function(c){L.push('- ['+(c.done?'x':' ')+'] '+c.item);});
+        L.push('','**Βεβαιότητα:** '+(s.certainty||'Δεν αξιολογήθηκε')+'  ','**Αναλογική αντίδραση:** '+(s.response||'—'),'');
+      });
+    });
+    L.push('---','','_Η αντίδρασή σου είναι το προϊόν._','');
+    return L.join('\n');
+  }
+  function toTXT(data){
+    var L=[data.title.toUpperCase(),'Εξαγωγή: '+new Date(data.exported).toLocaleString('el-GR'),'Συνολική ολοκλήρωση: '+data.completion,'','='.repeat(60)];
+    data.phases.forEach(function(p){
+      L.push('','ΦΑΣΗ '+p.letter+'. '+p.name,'-'.repeat(60));
+      p.steps.forEach(function(s){
+        L.push('','ΒΗΜΑ '+pad(s.num)+' — '+s.title,'Μοντέλο: '+s.model,'Κεντρικό ερώτημα: '+s.question,'');
+        s.fields.forEach(function(f){L.push('  • '+f.field,'    '+(f.answer||'—').replace(/\n/g,'\n    '));});
+        L.push('','  Checklist ('+s.completion+'):');
+        s.checklist.forEach(function(c){L.push('    ['+(c.done?'x':' ')+'] '+c.item);});
+        L.push('','  Βεβαιότητα: '+(s.certainty||'Δεν αξιολογήθηκε'),'  Αναλογική αντίδραση: '+(s.response||'—'));
+      });
+    });
+    return L.join('\n');
+  }
+  function csvCell(v){v=String(v==null?'':v);return '"'+v.replace(/"/g,'""')+'"';}
+  function toCSV(data){
+    var rows=[['Φάση','Βήμα','Τίτλος Βήματος','Μοντέλο','Τύπος','Πεδίο','Απάντηση / Κατάσταση']];
+    data.phases.forEach(function(p){p.steps.forEach(function(s){
+      s.fields.forEach(function(f){rows.push([p.letter+'. '+p.name,pad(s.num),s.title,s.model,'Πεδίο',f.field,f.answer]);});
+      s.checklist.forEach(function(c){rows.push([p.letter+'. '+p.name,pad(s.num),s.title,s.model,'Checklist',c.item,c.done?'Ναι':'Όχι']);});
+      rows.push([p.letter+'. '+p.name,pad(s.num),s.title,s.model,'Βεβαιότητα','Βεβαιότητα',s.certainty]);
+      rows.push([p.letter+'. '+p.name,pad(s.num),s.title,s.model,'Αντίδραση','Αναλογική αντίδραση',s.response]);
+    });});
+    return '\ufeff'+rows.map(function(r){return r.map(csvCell).join(';');}).join('\r\n');
+  }
+  function download(name,text,mime){
+    var blob=new Blob([text],{type:mime+';charset=utf-8'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1000);
+  }
+  function stamp(){var d=new Date();return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate());}
+  function on(id,fn){var el=document.getElementById(id);if(el)el.addEventListener('click',fn);}
+  on('exp-md',function(){download('egcheiridio-apantiseis-'+stamp()+'.md',toMD(collect()),'text/markdown');});
+  on('exp-txt',function(){download('egcheiridio-apantiseis-'+stamp()+'.txt',toTXT(collect()),'text/plain');});
+  on('exp-csv',function(){download('egcheiridio-apantiseis-'+stamp()+'.csv',toCSV(collect()),'text/csv');});
+  on('exp-json',function(){download('egcheiridio-apantiseis-'+stamp()+'.json',JSON.stringify(collect(),null,2),'application/json');});
+  on('exp-clear',function(){
+    if(!confirm('Να διαγραφούν όλες οι απαντήσεις και τα κουτάκια από αυτή τη συσκευή;'))return;
+    store={};try{localStorage.removeItem(KEY);}catch(e){}
+    document.querySelectorAll('.ans-in,.resp-in').forEach(function(el){el.value='';});
+    document.querySelectorAll('.cert-in').forEach(function(el){el.selectedIndex=0;});
+    document.querySelectorAll('.step input[type=checkbox]').forEach(function(b){b.checked=false;});
+    document.querySelectorAll('.step').forEach(upd);total();
+    if(note)note.textContent='Οι απαντήσεις διαγράφηκαν.';
+  });
 })();
 </script></body></html>
